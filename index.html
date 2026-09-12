@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>PG del Campo — Tienda</title>
+<meta name="description" content="Distribución inteligente del campo a tu hogar. Café, Pinolillo, Pinol y más desde Jinotepe, Carazo, Nicaragua.">
+<meta name="theme-color" content="#1b382b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PG del Campo">
+<meta name="application-name" content="PG del Campo">
+<meta name="msapplication-TileColor" content="#1b382b">
+<meta name="msapplication-navbutton-color" content="#1b382b">
+
+<!-- Open Graph -->
+<meta property="og:title" content="PG del Campo — Del Campo a Tu Hogar">
+<meta property="og:description" content="Distribución inteligente del campo a tu hogar. Café, Pinolillo, Pinol y más desde Jinotepe, Carazo, Nicaragua.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_NI">
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="48x48" href="icons/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="192x192" href="icons/android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="icons/android-chrome-512x512.png">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root{
+  --primary:#1b382b;
+  --primary-light:#2e6b3e;
+  --gold:#c9a84c;
+  --gold-light:#e8cc6a;
+  --cream:#f5f1e8;
+  --dark:#0e1f17;
+  --white:#fff;
+  --shadow:0 8px 32px rgba(27,56,43,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--cream);
+  color:var(--primary);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* Hero */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:2rem 1.5rem;
+  position:relative;
+  background:linear-gradient(135deg,var(--primary) 0%,var(--dark) 50%,#0a1a12 100%);
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at 30% 20%,rgba(201,168,76,0.12) 0%,transparent 60%),
+             radial-gradient(ellipse at 70% 80%,rgba(46,107,62,0.15) 0%,transparent 50%);
+  pointer-events:none;
+}
+
+.logo-wrap{
+  position:relative;
+  z-index:1;
+  margin-bottom:2rem;
+}
+.logo-icon{
+  width:140px;height:140px;
+  border-radius:28px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.4);
+  transition:transform .4s ease,box-shadow .4s ease;
+}
+.logo-icon:hover{
+  transform:scale(1.08) translateY(-4px);
+  box-shadow:0 16px 48px rgba(0,0,0,0.5);
+}
+
+.brand{
+  position:relative;z-index:1;
+  margin-bottom:.5rem;
+}
+.brand h1{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2rem,6vw,3.5rem);
+  font-weight:800;
+  color:var(--gold);
+  letter-spacing:1px;
+  text-shadow:0 2px 12px rgba(201,168,76,0.3);
+}
+.brand .subtitle{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(.85rem,2.5vw,1.15rem);
+  color:rgba(255,255,255,0.75);
+  margin-top:.5rem;
+  font-weight:300;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.bsd{
+  font-size:.85rem;
+  color:var(--gold-light);
+  margin-top:.35rem;
+  font-weight:500;
+}
+.ruc-line{
+  font-size:.7rem;
+  color:rgba(255,255,255,0.45);
+  margin-top:.3rem;
+}
+
+/* Navigation Cards */
+.nav-grid{
+  position:relative;z-index:1;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.25rem;
+  width:100%;
+  max-width:920px;
+  margin-top:2.5rem;
+}
+.nav-card{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(201,168,76,0.2);
+  border-radius:16px;
+  padding:1.5rem;
+  text-decoration:none;
+  color:var(--white);
+  transition:all .35s ease;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.75rem;
+  cursor:pointer;
+}
+.nav-card:hover{
+  background:rgba(201,168,76,0.12);
+  border-color:var(--gold);
+  transform:translateY(-4px);
+  box-shadow:0 12px 36px rgba(201,168,76,0.2);
+}
+.nav-card .card-icon{
+  width:56px;height:56px;
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;
+  transition:transform .3s ease;
+}
+.nav-card:hover .card-icon{transform:scale(1.12)}
+.card-icon.tienda{background:linear-gradient(135deg,#2e6b3e,#1b382b);color:var(--gold)}
+.card-icon.fidelidad{background:linear-gradient(135deg,#c9a84c,#a07c2e);color:#fff}
+.card-icon.admin{background:linear-gradient(135deg,#1a365d,#2a4365);color:#63b3ed}
+.card-icon.contacto{background:linear-gradient(135deg,#25D366,#128C3E);color:#fff}
+
+.nav-card h2{
+  font-family:'Fraunces',serif;
+  font-size:1.2rem;
+  font-weight:700;
+}
+.nav-card p{
+  font-size:.85rem;
+  color:rgba(255,255,255,0.6);
+  text-align:center;
+  line-height:1.4;
+}
+.card-badge{
+  display:inline-block;
+  font-size:.65rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  padding:2px 8px;
+  border-radius:20px;
+  background:var(--gold);
+  color:var(--primary);
+}
+
+/* Footer */
+.footer{
+  position:relative;z-index:1;
+  margin-top:3rem;
+  text-align:center;
+  color:rgba(255,255,255,0.35);
+  font-size:.75rem;
+  padding-bottom:2rem;
+}
+
+/* Install Banner */
+.install-banner{
+  position:fixed;bottom:0;left:0;width:100%;
+  background:linear-gradient(90deg,var(--primary),var(--primary-light));
+  color:#fff;
+  padding:12px 20px;
+  display:none;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 -4px 20px rgba(0,0,0,0.3);
+  z-index:9999;
+  font-size:.9rem;
+}
+.install-banner button{
+  background:var(--gold);
+  color:var(--primary);
+  border:none;
+  padding:8px 18px;
+  border-radius:24px;
+  font-weight:700;
+  font-size:.85rem;
+  cursor:pointer;
+  transition:background .2s;
+}
+.install-banner button:hover{background:var(--gold-light)}
+
+/* Slider */
+.slider-slide{min-width:100%;position:relative;overflow:hidden}
+.slider-slide img{width:100%;height:220px;object-fit:cover;display:block}
+.slider-slide .slide-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(27,56,43,0.85) 0%,transparent 50%);display:flex;align-items:flex-end;padding:16px 20px}
+.slider-slide .slide-title{color:#c9a84c;font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,0.5)}
+.slider-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.35);cursor:pointer;transition:all .3s}
+.slider-dot.active{background:#c9a84c;transform:scale(1.25)}
+.slider-btn:hover{background:rgba(201,168,76,0.7)!important}
+@media(max-width:600px){.slider-slide img{height:150px}.slider-slide .slide-title{font-size:.9rem}}
+
+/* Animations */
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.hero>*{animation:fadeInUp .6s ease-out both}
+.hero>*:nth-child(2){animation-delay:.1s}
+.hero>*:nth-child(3){animation-delay:.2s}
+.hero>*:nth-child(4){animation-delay:.3s}
+.hero>*:nth-child(5){animation-delay:.4s}
+
+/* Responsive */
+@media(max-width:600px){
+  .nav-grid{grid-template-columns:1fr;max-width:95%}
+  .logo-icon{width:110px;height:110px;border-radius:22px}
+  .nav-card{padding:1.2rem}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <!-- Logo -->
+  <div class="logo-wrap">
+    <img src="icons/android-chrome-512x512.png" alt="PG del Campo" class="logo-icon">
+  </div>
+
+  <!-- Brand -->
+  <div class="brand">
+    <h1>PG del Campo</h1>
+    <div class="subtitle">Del campo a tu hogar</div>
+    <div class="bsd">*BS"D</div>
+    <div class="ruc-line">RÚC 0452907730000U · Cuota Fija · Jinotepe, Carazo, Nicaragua</div>
+  </div>
+
+
+  <!-- ═══ Banner Slider (from Firebase anuncios/) ═══ -->
+  <div class="banner-slider" id="bannerSlider" style="position:relative;z-index:1;width:100%;max-width:920px;margin-top:1.5rem;overflow:hidden;border-radius:14px;box-shadow:0 6px 28px rgba(0,0,0,0.35);">
+    <div class="slider-track" id="sliderTrack" style="display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1);">
+      <!-- Slides injected by JS -->
+    </div>
+    <button class="slider-btn slider-prev" onclick="slideMove(-1)" aria-label="Anterior" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(27,56,43,0.75);color:#c9a84c;border:none;font-size:1rem;cursor:pointer;backdrop-filter:blur(6px);transition:background .2s">&#8249;</button>
+    <button class="slider-btn slider-next" onclick="slideMove(1)" aria-label="Siguiente" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(27,56,43,0.75);color:#c9a84c;border:none;font-size:1rem;cursor:pointer;backdrop-filter:blur(6px);transition:background .2s">&#8250;</button>
+    <div class="slider-dots" id="sliderDots" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2"></div>
+  </div>
+  <div id="bannerLoading" style="position:relative;z-index:1;width:100%;max-width:920px;margin-top:1.5rem;text-align:center;padding:12px;color:rgba(255,255,255,0.4);font-size:.85rem;display:none;"><i class="fas fa-spinner fa-spin"></i> Cargando anuncios...</div>
+
+  <!-- Navigation -->
+  <div class="nav-grid">
+    <a href="tienda.html" class="nav-card">
+      <div class="card-icon tienda"><i class="fas fa-store"></i></div>
+      <h2>Tienda en Línea</h2>
+      <p>Catálogo de productos con despacho directo. Café, Pinolillo, Pinol, Humus y más.</p>
+      <span class="card-badge">Comprar</span>
+    </a>
+
+    <a href="fidelidad.html" class="nav-card">
+      <div class="card-icon fidelidad"><i class="fas fa-star"></i></div>
+      <h2>Tarjeta de Fidelidad</h2>
+      <p>Acumula estrellas, desbloquea descuentos y sigue tus compras.</p>
+      <span class="card-badge">Estrellas</span>
+    </a>
+
+    <a href="enlaces.html" class="nav-card">
+      <div class="card-icon contacto"><i class="fab fa-whatsapp"></i></div>
+      <h2>Contacto</h2>
+      <p>WhatsApp, ubicación, horarios y cobertura de envíos.</p>
+      <span class="card-badge">Contactar</span>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    &copy; 2024–2026 PG del Campo — Con la ayuda del Cielo todo es posible realizar
+  </div>
+</div>
+
+<!-- Install Banner -->
+<div class="install-banner" id="installBanner">
+  <span><i class="fas fa-download"></i> Instalar PG del Campo en tu dispositivo</span>
+  <button id="installBtn">Instalar</button>
+</div>
+
+<!-- PWA Service Worker -->
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('sw.js').then(function(reg){
+      console.log('PG del Campo SW registrado:',reg.scope);
+    }).catch(function(err){console.warn('SW error:',err);});
+  });
+}
+
+var deferredPrompt;
+var installBanner=document.getElementById('installBanner');
+var installBtn=document.getElementById('installBtn');
+
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();
+  deferredPrompt=e;
+  setTimeout(function(){
+    if(!window.matchMedia('(display-mode: standalone)').matches){
+      installBanner.style.display='flex';
+    }
+  },3000);
+});
+
+if(installBtn){
+  installBtn.addEventListener('click',async function(){
+    if(!deferredPrompt)return;
+    deferredPrompt.prompt();
+    var result=await deferredPrompt.userChoice;
+    console.log('Install result:',result.outcome);
+    deferredPrompt=null;
+    installBanner.style.display='none';
+  });
+}
+
+window.addEventListener('appinstalled',function(){
+  installBanner.style.display='none';
+  console.log('App instalada exitosamente');
+});
+</script>
+
+<!-- Firebase SDK for client banner -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-compat.js"></script>
+<script>
+// Firebase config
+const firebaseConfig = {
+  apiKey: 'AIzaSyBfPmfE6axd_WOZ80b0L-Jbjy6q7l9_NTk',
+  authDomain: 'productos-globales-campo.firebaseapp.com',
+  databaseURL: 'https://productos-globales-campo-default-rtdb.firebaseio.com',
+  projectId: 'productos-globales-campo',
+  storageBucket: 'productos-globales-campo.firebasestorage.app',
+  messagingSenderId: '938958452862',
+  appId: '1:938958452862:web:3b618567dae9aa01b7c02f'
+};
+firebase.initializeApp(firebaseConfig);
+const dbRef = firebase.database();
+
+let sliderSlides = [];
+let sliderIndex = 0;
+let sliderInterval = null;
+
+// Load anuncios from Firebase
+const anunciosRef = dbRef.ref('anuncios');
+anunciosRef.on('value', function(snap) {
+  const data = snap.val() || {};
+  const items = [];
+  for (let key in data) {
+    const a = data[key];
+    if (a.activo !== false) {
+      items.push(a);
+    }
+  }
+  items.sort((a,b) => (a.orden||99) - (b.orden||99));
+  sliderSlides = items;
+  renderSlider();
+});
+
+function renderSlider() {
+  const track = document.getElementById('sliderTrack');
+  const dots = document.getElementById('sliderDots');
+  const loading = document.getElementById('bannerLoading');
+  
+  if (!sliderSlides.length) {
+    if(track) track.innerHTML = '';
+    if(dots) dots.innerHTML = '';
+    document.getElementById('bannerSlider').style.display = 'none';
+    return;
+  }
+  
+  if(loading) loading.style.display = 'none';
+  document.getElementById('bannerSlider').style.display = '';
+  
+  let html = '';
+  sliderSlides.forEach(function(slide, idx) {
+    const linkStart = slide.enlace ? '<a href="'+slide.enlace+'" target="_blank" style="display:block;text-decoration:none;color:inherit">' : '';
+    const linkEnd = slide.enlace ? '</a>' : '';
+    html += '<div class="slider-slide">' + linkStart;
+    html += '<img src="'+(slide.imagen||'')+'" alt="'+(slide.titulo||'Anuncio')+'" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22920%22 height=%22220%22><rect fill=%22%231b382b%22 width=%22920%22 height=%22220%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%23c9a84c%22 font-size=%2220%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>'+encodeURIComponent(slide.titulo||'PG del Campo')+'</text></svg>'">';
+    html += '<div class="slide-overlay"><div class="slide-title">'+(slide.titulo||'')+'</div></div>';
+    html += linkEnd + '</div>';
+  });
+  if(track) track.innerHTML = html;
+  
+  // Dots
+  let dotsHTML = '';
+  sliderSlides.forEach(function(_, idx) {
+    dotsHTML += '<div class="slider-dot'+(idx===0?' active':'')+'" onclick="slideGo('+idx+')"></div>';
+  });
+  if(dots) dots.innerHTML = dotsHTML;
+  
+  sliderIndex = 0;
+  startAutoSlide();
+}
+
+function slideGo(idx) {
+  sliderIndex = idx;
+  updateSliderPosition();
+  resetAutoSlide();
+}
+
+function slideMove(dir) {
+  sliderIndex += dir;
+  if(sliderIndex < 0) sliderIndex = sliderSlides.length - 1;
+  if(sliderIndex >= sliderSlides.length) sliderIndex = 0;
+  updateSliderPosition();
+  resetAutoSlide();
+}
+
+function updateSliderPosition() {
+  const track = document.getElementById('sliderTrack');
+  if(track) track.style.transform = 'translateX(-' + (sliderIndex * 100) + '%)';
+  // Update dots
+  const dots = document.querySelectorAll('.slider-dot');
+  dots.forEach(function(dot, idx) {
+    dot.classList.toggle('active', idx === sliderIndex);
+  });
+}
+
+function startAutoSlide() {
+  if(sliderInterval) clearInterval(sliderInterval);
+  sliderInterval = setInterval(function() {
+    if(sliderSlides.length > 1) {
+      sliderIndex = (sliderIndex + 1) % sliderSlides.length;
+      updateSliderPosition();
+    }
+  }, 4500);
+}
+
+function resetAutoSlide() {
+  startAutoSlide();
+}
+</script>
+
+</body>
+</html>

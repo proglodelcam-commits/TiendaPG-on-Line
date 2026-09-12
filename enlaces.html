@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PG del Campo — Contacto y Enlaces</title>
+<meta name="theme-color" content="#1b382b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PG del Campo">
+<meta name="description" content="Contacto, ubicación, horarios y cobertura de envíos de PG del Campo.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="48x48" href="icons/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#1b382b;
+  --gold:#c9a84c;
+  --cream:#f5f1e8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--cream);
+  color:#333;
+  min-height:100vh;
+  padding:0;
+}
+
+/* Header */
+.page-header{
+  background:linear-gradient(135deg,var(--primary),#0e1f17);
+  padding:1.5rem 1rem;
+  text-align:center;
+}
+.page-header h1{
+  font-family:'Fraunces',serif;
+  color:var(--gold);
+  font-size:1.6rem;
+  font-weight:700;
+}
+.page-header .back-link{
+  display:inline-block;
+  margin-top:.75rem;
+  color:rgba(255,255,255,0.7);
+  text-decoration:none;
+  font-size:.85rem;
+}
+.page-header .back-link:hover{color:#fff}
+
+/* Content */
+.content{
+  max-width:600px;
+  margin:0 auto;
+  padding:1.5rem 1rem;
+}
+
+/* Lista de Contacto */
+.lista-contacto {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.lista-contacto li {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 14px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border-left: 4px solid var(--primary);
+}
+.lista-contacto i {
+  font-size: 22px;
+  width: 28px;
+  text-align: center;
+  margin-top: 3px;
+}
+
+/* Colores individuales */
+.color-mapa     { color: #E44D26; }
+.color-whatsapp { color: #25D366; }
+.color-correo   { color: #EA4335; }
+.color-horario  { color: #4A5568; }
+.color-envios   { color: #3182CE; }
+
+.lista-contacto li:nth-child(1) { border-left-color: #E44D26; }
+.lista-contacto li:nth-child(2) { border-left-color: #25D366; }
+.lista-contacto li:nth-child(3) { border-left-color: #EA4335; }
+.lista-contacto li:nth-child(4) { border-left-color: #4A5568; }
+.lista-contacto li:nth-child(5) { border-left-color: #3182CE; }
+
+/* Enlaces */
+.enlace-contacto {
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+.enlace-mapa { color: #E44D26; }
+.enlace-mapa:hover { color: #B91C1C; text-decoration: underline; }
+.enlace-whatsapp { color: #128C3E; }
+.enlace-whatsapp:hover { color: #066527; text-decoration: underline; }
+.enlace-correo { color: #EA4335; }
+.enlace-correo:hover { color: #B71C1C; text-decoration: underline; }
+
+/* Animación iconos */
+.icono-animado {
+  animation: vibrarIntermitente 4s ease-in-out infinite;
+}
+.lista-contacto li:hover .icono-animado {
+  animation-play-state: paused;
+}
+@keyframes vibrarIntermitente {
+  0%, 15%, 100% { transform: rotate(0deg); }
+  2%  { transform: rotate(-12deg); }
+  4%  { transform: rotate(12deg); }
+  6%  { transform: rotate(-10deg); }
+  8%  { transform: rotate(10deg); }
+  10% { transform: rotate(-6deg); }
+  12% { transform: rotate(6deg); }
+}
+
+/* Footer */
+.footer{
+  text-align:center;
+  padding:1.5rem 1rem;
+  font-size:.75rem;
+  color:#888;
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1><i class="fas fa-phone-alt"></i> Contacto y Enlaces</h1>
+  <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+</header>
+
+<div class="content">
+  <ul class="lista-contacto">
+    <!-- Ubicación -->
+    <li>
+      <i class="fas fa-map-marker-alt icono-animado color-mapa"></i>
+      <div>
+        <strong>Ubicación Principal:</strong><br>
+        <a href="https://www.google.com/maps/search/Jinotepe,+Carazo,+Nicaragua" target="_blank" rel="noopener noreferrer" class="enlace-contacto enlace-mapa">
+          Jinotepe, Carazo, Nicaragua
+        </a>
+      </div>
+    </li>
+
+    <!-- WhatsApp -->
+    <li>
+      <i class="fab fa-whatsapp icono-animado color-whatsapp"></i>
+      <div>
+        <strong>Línea de Atención / WhatsApp:</strong><br>
+        <a href="https://wa.me/50557973097?text=Hola%20PG%20del%20Campo%2C%20necesito%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="enlace-contacto enlace-whatsapp">
+          +505 5797 3097
+        </a>
+      </div>
+    </li>
+
+    <!-- Correo -->
+    <li>
+      <i class="fas fa-envelope icono-animado color-correo"></i>
+      <div>
+        <strong>Correo Electrónico:</strong><br>
+        <a href="mailto:proglodelcam@gmail.com?subject=Consulta%20desde%20PG%20del%20Campo" class="enlace-contacto enlace-correo">
+          proglodelcam@gmail.com
+        </a>
+      </div>
+    </li>
+
+    <!-- Horario -->
+    <li>
+      <i class="fas fa-clock icono-animado color-horario"></i>
+      <div>
+        <strong>Horario de Operación:</strong><br>
+        Lunes a Viernes: 8:00 AM - 4:00 PM<br>
+        Sábados: 8:00 AM - 12:00 PM
+      </div>
+    </li>
+
+    <!-- Cobertura -->
+    <li>
+      <i class="fas fa-truck icono-animado color-envios"></i>
+      <div>
+        <strong>Cobertura de Envíos:</strong><br>
+        Entregas locales en Jinotepe, Diriamba, Dolores y San Marcos. Envíos nacionales a convenir.
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="footer">
+  &copy; 2024–2026 PG del Campo — *BS"D — Con la ayuda del Cielo todo es posible realizar
+</div>
+
+<!-- PWA Service Worker -->
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('sw.js').then(function(reg){
+      console.log('PG del Campo SW registrado:',reg.scope);
+    }).catch(function(err){console.warn('SW error:',err);});
+  });
+}
+</script>
+</body>
+</html>

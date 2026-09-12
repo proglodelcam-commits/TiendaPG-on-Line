@@ -1,0 +1,100 @@
+{
+  "rules": {
+    "productos": {
+      ".read": true,
+      ".write": "auth != null",
+      "$productId": {
+        ".validate": "newData.hasChildren(['nombre', 'precio', 'stock'])",
+        "nombre": { ".validate": "newData.isString() && newData.val().length > 0" },
+        "precio": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+        "stock": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+        "imagen": { ".validate": "newData.isString() },
+        "$other": { ".validate": false }
+      }
+    },
+    "clientes": {
+      ".read": true,
+      ".write": "auth != null",
+      "$phone": {
+        ".validate": "newData.hasChildren(['nombre'])",
+        "nombre": { ".validate": "newData.isString()" },
+        "total_compras": { ".validate": "newData.isNumber()" },
+        "monto_total": { ".validate": "newData.isNumber()" },
+        "ultima_compra": { ".validate": "newData.isString()" },
+        "compras": {
+          "$purchaseId": {
+            ".validate": "newData.hasChildren(['id', 'fecha', 'numero_recibo', 'tipo', 'estado', 'subtotal', 'total'])",
+            "$other": { ".validate": true }
+          }
+        },
+        "$other": { ".validate": true }
+      }
+    },
+    "compras_registro": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$purchaseId": {
+        ".validate": "newData.hasChildren(['id', 'fecha', 'whatsapp_cliente', 'nombre_cliente', 'numero_recibo', 'tipo', 'estado', 'items', 'subtotal', 'descuento', 'envio', 'total'])",
+        "$other": { ".validate": true }
+      }
+    },
+    "transacciones": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$txId": {
+        ".validate": "newData.hasChildren(['id', 'fecha', 'cliente', 'whatsapp', 'tipo', 'monto', 'estado', 'numero_recibo'])",
+        "$other": { ".validate": true }
+      }
+    },
+    "cuentas_por_cobrar": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$accountId": {
+        ".validate": "newData.hasChildren(['id', 'fecha', 'whatsapp_cliente', 'nombre_cliente', 'numero_recibo', 'monto_original', 'saldo_pendiente', 'estado'])",
+        "$other": { ".validate": true }
+      }
+    },
+    "cupones": {
+      ".read": true,
+      ".write": "auth != null",
+      "$couponId": {
+        ".validate": "newData.hasChildren(['codigo', 'descuento', 'activo'])",
+        "$other": { ".validate": true }
+      }
+    },
+    "meta": {
+      ".read": true,
+      ".write": "auth != null",
+      "contador_recibo": {
+        ".validate": "newData.isNumber() && newData.val() > 0"
+      },
+      "$other": { ".validate": true }
+    },
+    "config": {
+      ".read": true,
+      ".write": "auth != null",
+      "$key": { ".validate": true }
+    },
+    "estadisticas": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$key": { ".validate": true }
+    },
+    "gastos": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$expenseId": {
+        ".validate": "newData.hasChildren(['descripcion', 'monto', 'fecha', 'categoria'])",
+        "$other": { ".validate": true }
+      }
+    },
+    "usuarios": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$uid": {
+        ".validate": "newData.hasChildren(['nombre', 'rol'])",
+        "$other": { ".validate": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>PG del Campo - Del campo a su mesa</title>
+<meta name="theme-color" content="#1b382b">
+<meta name="description" content="Productos nicaragüenses de calidad: Café, Pinolillo y Pinol. Directamente del campo a su mesa en Jinotepe, Carazo.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PG Campo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --primary-color:#2E7D32;--primary-light:#4CAF50;--primary-dark:#1B5E20;
+  --secondary-color:#FF9800;--light-color:#F5F5F5;--dark-color:#333333;
+  --gray-color:#757575;--white:#FFFFFF;
+  --shadow:0 2px 10px rgba(0,0,0,0.08);--border-radius:12px;
+  --primary:#1b382b;--accent:#c8963e;--leaf:#8eb057;
+  --bg-cream:#f4f4f6;--bg-warm:#fdfbf7;--bg-white:#ffffff;
+  --text-dark:#2c2c2c;--text-muted:#6b7c68;
+  --border-color:#e2e8e0;--radius-lg:16px;--radius-md:12px;
+  --transition:all 0.25s ease
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{height:100%;overflow-x:hidden}
+body{font-family:'Plus Jakarta Sans','Roboto',sans-serif;line-height:1.6;color:var(--dark-color);background:#f9f9f9;height:100%;overflow-x:hidden;position:relative;padding-bottom:70px}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;font-weight:600;color:var(--primary-dark)}
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 16px}
+
+/* Marquee */
+.marquee-container{width:100%;background-color:var(--primary-dark);overflow:hidden;white-space:nowrap;padding:3px 0;display:flex;align-items:center}
+.marquee-track{display:flex;width:max-content;animation:scroll-left 12s linear infinite}
+.marquee-text{font-size:11px;font-weight:500;color:#fff;padding-right:50px;font-family:'Plus Jakarta Sans',sans-serif}
+@keyframes scroll-left{0%{transform:translateX(0%)}100%{transform:translateX(-50%)}}
+
+/* Header */
+header{background-color:var(--white);box-shadow:var(--shadow);position:sticky;top:0;z-index:1000;padding:12px 0}
+.header-container{display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{background-color:var(--primary-color);color:var(--white);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
+.logo-text{display:flex;flex-direction:column}
+.logo-text h1{font-size:18px;color:var(--primary-color);line-height:1.2}
+.logo-text span{font-size:11px;color:var(--secondary-color);font-weight:600;letter-spacing:0.3px}
+.header-actions{display:flex;align-items:center;gap:16px}
+.cart-icon{position:relative;cursor:pointer;padding:4px}
+.cart-icon i{font-size:22px;color:var(--primary-color)}
+.cart-count{position:absolute;top:-4px;right:-6px;background-color:var(--secondary-color);color:var(--white);font-size:11px;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold}
+
+/* Bottom Nav */
+.bottom-nav{position:fixed;bottom:0;left:0;width:100%;background-color:var(--white);box-shadow:0 -2px 10px rgba(0,0,0,0.08);z-index:1000;display:flex;justify-content:space-around;padding:8px 0}
+.nav-item{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:var(--gray-color);font-size:11px;font-weight:500;flex:1}
+.nav-item i{font-size:19px;margin-bottom:2px}
+.nav-item.active{color:var(--primary-color);font-weight:700}
+
+/* Sections */
+.section{padding:16px 0;display:none}
+.section.active{display:block;animation:fadeIn 0.25s ease-in-out}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.section-title{font-size:20px;margin-bottom:16px;position:relative;padding-bottom:8px}
+.section-title:after{content:"";display:block;width:48px;height:4px;background-color:var(--secondary-color);position:absolute;bottom:0;left:0;border-radius:2px}
+
+/* Hero */
+.hero{background:linear-gradient(rgba(46,125,50,0.9),rgba(46,125,50,0.82));color:var(--white);padding:36px 0;text-align:center;margin-bottom:20px;border-radius:0 0 20px 20px}
+.hero h2{font-size:22px;margin-bottom:8px;color:var(--white)}
+.hero p{font-size:14px;margin-bottom:18px;opacity:0.95}
+.btn-hero{display:inline-block;background-color:var(--secondary-color);color:var(--white);padding:12px 24px;border-radius:var(--border-radius);text-decoration:none;font-weight:600;border:none;cursor:pointer;transition:all 0.3s;font-size:15px;width:100%;text-align:center}
+.btn-hero:hover,.btn-hero:active{background-color:#F57C00;transform:translateY(-1px)}
+
+/* Products Grid */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px;margin-bottom:24px}
+@media(min-width:600px){.products-grid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}}
+.product-card{background:var(--bg-white);border-radius:var(--radius-lg);border:1px solid rgba(27,56,43,0.08);overflow:hidden;box-shadow:var(--shadow);transition:var(--transition);display:flex;flex-direction:column}
+.product-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(27,56,43,0.1)}
+.product-image-container{width:100%;aspect-ratio:4/3;background-color:#f8faf8;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--border-color)}
+.product-image{width:100%;height:100%;object-fit:contain;padding:6px}
+.product-image-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--leaf);background-color:#eef0ee}
+.product-info{padding:10px;display:flex;flex-direction:column;flex-grow:1}
+.product-name{font-size:0.85rem;font-weight:700;margin-bottom:4px;color:var(--text-dark);line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.product-price{font-size:0.98rem;font-weight:800;color:var(--primary);margin-top:auto;margin-bottom:8px}
+.btn-add{background-color:var(--primary);color:#fff;border:none;padding:8px;border-radius:var(--radius-md);font-weight:700;cursor:pointer;width:100%;transition:var(--transition);display:flex;justify-content:center;align-items:center;gap:4px;font-size:11.5px}
+.btn-add:hover{background-color:var(--primary-dark)}
+.btn-add:disabled{background-color:#cbd5e1;cursor:not-allowed}
+
+/* Cart Panel */
+.cart-panel{background:var(--bg-white);border-radius:var(--radius-lg);padding:16px;box-shadow:var(--shadow);border:1px solid rgba(27,56,43,0.08);margin-bottom:20px}
+.panel-section-title{font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:12px;border-bottom:2px solid var(--bg-cream);padding-bottom:6px;display:flex;align-items:center;gap:8px}
+.cart-items-container{margin-bottom:15px;max-height:260px;overflow-y:auto}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-color);font-size:12.5px}
+.cart-item-details h4{font-weight:700;color:var(--text-dark);font-size:13px}
+.cart-item-details p{color:var(--text-muted);font-size:11px}
+.cart-item-actions{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.btn-remove{background:none;border:none;color:#dc3545;font-size:11px;font-weight:600;cursor:pointer;padding:2px 4px}
+.cart-empty{text-align:center;color:var(--text-muted);padding:20px 0;font-size:13px}
+
+/* Stamps / Loyalty */
+.stamp{background:linear-gradient(135deg,var(--primary-dark),#28523f);color:#fff;border-radius:12px;padding:13px;margin-bottom:13px}
+.stamp h3{margin:0 0 5px;color:var(--accent);font-size:12px}
+.sg{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10px}
+.sd{aspect-ratio:1;border-radius:50%;border:1px dashed #ffffff77;display:grid;place-items:center;font-size:12px}
+.sd.on{background:#fff;color:#333}
+
+/* Form Groups */
+.form-group{margin-bottom:10px}
+.form-group label{display:block;font-size:11px;font-weight:600;margin-bottom:3px;color:var(--text-dark)}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:9px;border:1px solid var(--border-color);border-radius:var(--radius-md);font-size:12.5px;outline:none;font-family:inherit}
+.form-group input:focus,.form-group select:focus{border-color:var(--primary)}
+.form-group textarea{resize:vertical}
+
+/* Totals */
+.totals-line{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px}
+.totals-line.total{font-size:15px;font-weight:800;color:var(--primary);border-top:2px dashed var(--border-color);padding-top:8px;margin-top:8px}
+.discount-label{color:#28a745;font-weight:600}
+
+/* Notices */
+.notice{margin-top:10px;padding:9px;border-radius:8px;font-size:10px}
+.credit{background:#fff7df;border:1px solid #efd48d;color:#6d520c}
+.cash{background:#e8f6ed;border:1px solid #b9dfc6;color:#176437}
+
+/* Action Buttons */
+.btn-action{width:100%;padding:12px;border:none;border-radius:var(--radius-md);font-weight:700;font-size:13.5px;cursor:pointer;transition:var(--transition);display:flex;justify-content:center;align-items:center;gap:8px;margin-top:8px;text-decoration:none}
+.btn-whatsapp{background-color:#25d366;color:white}
+.btn-whatsapp:hover{background-color:#1ebd58}
+.btn-whatsapp:disabled,.btn-recibo:disabled{background-color:#cbd5e1;color:#94a3b8;cursor:not-allowed}
+.btn-recibo{background-color:var(--primary);color:white}
+.btn-recibo:hover{background-color:var(--primary-dark)}
+/* (estilos btn-lafise-direct eliminados — ya no se usa enlace profundo) */
+
+/* LAFISE ACH Card */
+.lafise-ach-card{background-color:#f8faf8;border:1px solid #1B5E20;border-radius:12px;padding:14px;margin:12px 0;font-family:'Plus Jakarta Sans',sans-serif}
+.ach-header{display:flex;align-items:center;gap:8px;color:#1B5E20;font-weight:700;font-size:13.5px;border-bottom:1px dashed #c8963e;padding-bottom:6px;margin-bottom:10px}
+.ach-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:12.5px}
+.ach-label{color:#555}
+.ach-value{color:#2c2c2c;font-weight:600}
+.ach-value.highlight{color:#1B5E20;font-size:14px}
+.ach-copy-group{display:flex;align-items:center;gap:8px}
+.btn-copy-alias{background:#1B5E20;color:#fff;border:none;padding:4px 8px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;transition:background 0.2s ease}
+.btn-copy-alias:hover{background:#2E7D32}
+.ach-footer-note{margin-top:8px;padding-top:6px;border-top:1px solid #e2e8f0;font-size:10.5px;color:#6b7c68}
+.qr-payment{text-align:center;margin-top:14px;font-size:11px}
+.qr-payment img{margin:6px 0;border:1px solid var(--border-color);border-radius:8px;padding:4px}
+.qr-payment a{color:#005691;font-weight:bold;text-decoration:none;display:block}
+
+/* About / Contact */
+.about-card,.contact-card{background-color:var(--white);border-radius:var(--border-radius);padding:20px;box-shadow:var(--shadow);margin-bottom:16px}
+.about-card h3,.contact-card h3{margin-bottom:12px;color:var(--primary-color)}
+.about-card p,.contact-card p{margin-bottom:12px;line-height:1.5;font-size:13.5px}
+.contact-info{list-style:none}
+.contact-info li{display:flex;align-items:flex-start;margin-bottom:14px;font-size:13px}
+.contact-info i{color:var(--primary-color);margin-right:12px;font-size:16px;margin-top:3px}
+
+/* Footer */
+footer{background-color:var(--primary-dark);color:var(--white);padding:24px 0 40px}
+.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.footer-logo i{font-size:20px}
+.footer-links{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.footer-column h3{color:var(--white);margin-bottom:8px;font-size:14px}
+.footer-column ul{list-style:none}
+.footer-column li{margin-bottom:6px}
+.footer-column a{color:#ddd;text-decoration:none;font-size:12.5px}
+.social-icons{display:flex;gap:16px;margin-top:16px;justify-content:center}
+.social-icons a{color:var(--white);font-size:18px;display:inline-block;padding:6px}
+.copyright{text-align:center;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);font-size:12px;color:#ccc;margin-top:16px}
+
+/* Modal */
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:2000;justify-content:center;align-items:center;padding:15px}
+.modal-content{background:white;padding:20px;border-radius:var(--radius-lg);max-width:420px;width:100%;max-height:90vh;overflow-y:auto}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid var(--border-color);padding-bottom:6px}
+.btn-close-modal{background:none;border:none;font-size:20px;cursor:pointer;color:var(--text-muted)}
+
+/* Chatbot */
+#chatbot-launcher{position:fixed;bottom:130px;right:24px;width:62px;height:62px;
+  background:linear-gradient(145deg,#2E7D32 0%,#1B5E20 100%);
+  color:white;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 15px rgba(0,0,0,0.2),0 0 22px rgba(66,165,245,0.28);
+  cursor:pointer;z-index:1050;
+  transition:transform .3s ease,box-shadow .3s ease;
+  border:2.5px solid rgba(255,255,255,0.12);
+  backdrop-filter:blur(4px);
+  animation:launcherPulse 3s ease-in-out infinite;
+}
+#chatbot-launcher:hover{transform:scale(1.12);box-shadow:0 6px 22px rgba(0,0,0,0.28),0 0 32px rgba(66,165,245,0.45)}
+#chatbot-launcher:active{transform:scale(1.02)}
+#chatbot-launcher svg{width:36px;height:36px;filter:drop-shadow(0 1px 4px rgba(0,0,0,0.3))}
+@keyframes launcherPulse{
+  0%,100%{box-shadow:0 4px 15px rgba(0,0,0,0.2),0 0 22px rgba(66,165,245,0.28)}
+  50%{box-shadow:0 4px 15px rgba(0,0,0,0.2),0 0 36px rgba(66,165,245,0.5)}
+}
+#chatbot-window{position:fixed;bottom:200px;right:24px;width:340px;max-width:calc(100vw - 48px);height:440px;background:#ffffff;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,0.18);border:1px solid var(--border-color);display:none;flex-direction:column;z-index:1050;overflow:hidden;animation:popUpBot 0.3s ease}
+@keyframes popUpBot{from{opacity:0;transform:translateY(20px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+#header-bot{display:flex;align-items:center;justify-content:space-between;background:var(--primary-color);color:white;padding:12px 16px}
+.bot-title-area{display:flex;align-items:center;gap:10px}
+#header-bot h3{margin:0;color:white;font-size:15px;display:flex;align-items:center;gap:6px}
+#header-bot span{font-size:10px;color:var(--primary-dark);background:#e2f0d9;padding:2px 6px;border-radius:10px;font-weight:bold}
+.btn-close-bot{background:none;border:none;color:white;font-size:18px;cursor:pointer;opacity:0.8}
+.btn-close-bot:hover{opacity:1}
+#historial{flex:1;overflow-y:auto;padding:12px;background:#fafafa;display:flex;flex-direction:column;gap:8px}
+.mensaje{padding:8px 12px;border-radius:12px;max-width:85%;font-size:13px;line-height:1.4;word-wrap:break-word;white-space:pre-line}
+.usuario{background-color:var(--primary-color);color:white;align-self:flex-end;border-bottom-right-radius:2px}
+.ia{background-color:#eaefe9;color:#233e20;align-self:flex-start;border-bottom-left-radius:2px;border:1px solid #d3ded2}
+#input-area{display:flex;gap:6px;padding:10px;background:#ffffff;border-top:1px solid var(--border-color)}
+#texto{flex-grow:1;padding:8px 12px;border:1px solid #ccc;border-radius:8px;font-size:13px;outline:none}
+#texto:focus{border-color:var(--primary-color)}
+#btn-enviar{background-color:var(--primary-color);color:white;border:none;padding:0 14px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:13px}
+#btn-enviar:disabled{background-color:#a0a0a0;cursor:not-allowed}
+
+/* Install Banner */
+.install-banner{position:fixed;bottom:60px;left:0;width:100%;background-color:var(--primary-color);color:white;padding:12px 16px;display:none;justify-content:space-between;align-items:center;box-shadow:0 -2px 10px rgba(0,0,0,0.15);z-index:999}
+.install-banner p{font-size:13px;flex-grow:1}
+.install-banner button{background-color:var(--white);color:var(--primary-color);border:none;padding:6px 14px;border-radius:20px;font-weight:600;font-size:12px;margin-left:10px}
+
+/* Print */
+@page{size:80mm auto;margin:0}
+@media print{
+  body *{visibility:hidden!important}
+  #receipt-modal,#receipt-modal *{visibility:visible!important}
+  #receipt-modal{position:absolute!important;left:0!important;top:0!important;width:80mm!important;padding:0!important;margin:0!important;background:none!important}
+  .modal-content{width:80mm!important;max-width:80mm!important;padding:4mm!important;border:none!important;box-shadow:none!important;margin:0!important;border-radius:0!important}
+  .no-print{display:none!important}
+}
+
+
+/* ===== PANTALLA DE BIENVENIDA ANIMADA ===== */
+.intro-splash{
+  position:fixed;inset:0;z-index:10000;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  min-height:100vh;min-height:100dvh;
+  background:#050e0a;
+  overflow:hidden;
+  transition:opacity .9s cubic-bezier(.7,0,.3,1),transform .9s cubic-bezier(.7,0,.3,1),filter .9s cubic-bezier(.7,0,.3,1);
+}
+.intro-splash.fade-out{
+  opacity:0;transform:scale(1.18);filter:blur(12px);pointer-events:none;
+}
+
+/* dark overlay that brightens */
+.intro-splash .intro-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 60% at 50% 46%,rgba(46,125,50,.55) 0%,rgba(27,94,32,.35) 40%,transparent 75%);
+  animation:bg-breathe 5s ease-in-out infinite alternate;
+}
+@keyframes bg-breathe{
+  0%{opacity:.45;transform:scale(1)}
+  100%{opacity:1;transform:scale(1.06)}
+}
+
+/* floating grain particles */
+.intro-splash .intro-particles{
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;
+}
+.intro-splash .intro-particles .g{
+  position:absolute;border-radius:50%;
+  animation:gfloat linear infinite;
+}
+@keyframes gfloat{
+  0%{transform:translateY(0) translateX(0) scale(1);opacity:0}
+  8%{opacity:.65}
+  90%{opacity:.35}
+  100%{transform:translateY(-108vh) translateX(25px) scale(.25);opacity:0}
+}
+
+/* golden ring */
+.intro-splash .intro-ring{
+  position:absolute;
+  width:clamp(260px,52vw,400px);height:clamp(260px,52vw,400px);
+  border:2px solid rgba(200,150,62,.1);border-radius:50%;
+  animation:rpulse 6s ease-in-out infinite alternate;
+}
+@keyframes rpulse{
+  0%{transform:scale(1) rotate(0deg);opacity:.08}
+  100%{transform:scale(1.1) rotate(12deg);opacity:.22}
+}
+.intro-splash .intro-ring2{
+  position:absolute;
+  width:clamp(300px,58vw,480px);height:clamp(300px,58vw,480px);
+  border:1.5px solid rgba(200,150,62,.06);border-radius:50%;
+  animation:rpulse 8s ease-in-out infinite alternate-reverse;
+}
+
+/* decorative leaves */
+.intro-splash .intro-leaf-tl,
+.intro-splash .intro-leaf-br{
+  position:absolute;font-size:clamp(90px,18vw,200px);
+  color:rgba(142,176,87,.04);pointer-events:none;
+  animation:ldrift 9s ease-in-out infinite alternate;
+}
+.intro-splash .intro-leaf-tl{top:-12px;left:-12px}
+.intro-splash .intro-leaf-br{bottom:-12px;right:-12px;animation-delay:4.5s}
+@keyframes ldrift{
+  0%{transform:scale(1) rotate(0deg);opacity:.03}
+  100%{transform:scale(1.14) rotate(7deg);opacity:.08}
+}
+
+/* diagonal scan lines */
+.intro-splash .intro-scan{
+  position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(135deg,transparent,transparent 85px,rgba(200,150,62,.02) 85px,rgba(200,150,62,.02) 86px);
+}
+
+/* center wrapper */
+.intro-splash .intro-center{
+  position:relative;z-index:3;
+  display:flex;flex-direction:column;
+  align-items:center;gap:10px;text-align:center;
+}
+
+/* LOGO: dramatic entrance */
+.intro-splash .intro-logo{
+  width:clamp(100px,26vw,160px);height:auto;
+  opacity:0;
+  transform:scale(.25) rotate(-10deg);
+  filter:drop-shadow(0 0 40px rgba(200,150,62,.6)) brightness(.25);
+  animation:logoIn 1.3s cubic-bezier(.16,1,.3,1) .2s forwards;
+}
+@keyframes logoIn{
+  0%{opacity:0;transform:scale(.25) rotate(-10deg);filter:drop-shadow(0 0 40px rgba(200,150,62,.6)) brightness(.25)}
+  45%{opacity:.75;transform:scale(1.1) rotate(1deg);filter:drop-shadow(0 0 60px rgba(200,150,62,.9)) brightness(.8)}
+  70%{transform:scale(.96) rotate(-.5deg);filter:drop-shadow(0 4px 22px rgba(200,150,62,.5)) brightness(1)}
+  100%{opacity:1;transform:scale(1) rotate(0deg);filter:drop-shadow(0 4px 16px rgba(0,0,0,.4)) brightness(1)}
+}
+
+/* golden separator bar */
+.intro-splash .intro-bar{
+  width:0;height:2.5px;
+  background:linear-gradient(90deg,transparent,#c8963e,#e6c565,#c8963e,transparent);
+  border-radius:2px;
+  animation:barGrow .8s cubic-bezier(.16,1,.3,1) 1.35s forwards;
+}
+@keyframes barGrow{
+  0%{width:0;opacity:0}
+  50%{opacity:1}
+  100%{width:clamp(70px,20vw,150px);opacity:1}
+}
+
+/* BRAND NAME: clip-path reveal */
+.intro-splash .intro-brand{
+  font-family:'Fraunces',serif;
+  font-weight:800;
+  font-size:clamp(26px,6.5vw,52px);
+  color:#fff;letter-spacing:.03em;
+  clip-path:inset(0 100% 0 0);
+  white-space:nowrap;
+  animation:brandReveal 1s cubic-bezier(.65,0,.35,1) 1.55s forwards;
+}
+@keyframes brandReveal{
+  0%{clip-path:inset(0 100% 0 0);opacity:0}
+  15%{opacity:1}
+  100%{clip-path:inset(0 0% 0 0);opacity:1}
+}
+
+/* TAGLINE: fade up */
+.intro-splash .intro-tagline{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-weight:500;font-size:clamp(10.5px,2.3vw,14px);
+  color:rgba(255,255,255,.55);letter-spacing:.05em;
+  opacity:0;transform:translateY(14px);
+  animation:tagUp .7s cubic-bezier(.16,1,.3,1) 2.5s forwards;
+}
+@keyframes tagUp{
+  0%{opacity:0;transform:translateY(14px)}
+  100%{opacity:1;transform:translateY(0)}
+}
+
+/* SUB-TAGLINE: second line fade up */
+.intro-splash .intro-sub{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-weight:400;font-size:clamp(9px,1.8vw,11.5px);
+  color:rgba(255,255,255,.35);letter-spacing:.03em;
+  opacity:0;transform:translateY(10px);
+  animation:tagUp .6s cubic-bezier(.16,1,.3,1) 2.85s forwards;
+}
+
+/* sparkle accents */
+.intro-splash .intro-sp{
+  position:absolute;pointer-events:none;
+  font-size:clamp(9px,1.8vw,16px);
+  opacity:0;animation:spBurst .6s ease-out forwards;
+}
+@keyframes spBurst{
+  0%{opacity:0;transform:scale(0) translateY(0)}
+  35%{opacity:1}
+  100%{opacity:0;transform:scale(1.6) translateY(-22px)}
+}
+
+/* progress indicator at bottom */
+.intro-splash .intro-progress{
+  position:absolute;bottom:clamp(18px,5vw,32px);left:50%;
+  transform:translateX(-50%);
+  width:clamp(80px,22vw,140px);height:3px;
+  background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;
+  z-index:3;
+}
+.intro-splash .intro-progress-bar{
+  width:0%;height:100%;
+  background:linear-gradient(90deg,#c8963e,#e6c565);
+  border-radius:3px;
+  animation:progFill 3.6s linear .3s forwards;
+}
+@keyframes progFill{
+  0%{width:0%}
+  100%{width:100%}
+}
+
+/* responsive */
+@media(max-width:480px){
+  .intro-splash .intro-ring{width:200px;height:200px}
+  .intro-splash .intro-ring2{width:240px;height:240px}
+}
+
+</style>
+</head>
+<body>
+<!-- PANTALLA DE BIENVENIDA ANIMADA -->
+<div id="pantalla-bienvenida" class="intro-splash">
+  <div class="intro-bg"></div>
+  <div class="intro-particles" id="introParticles"></div>
+  <div class="intro-scan"></div>
+  <div class="intro-ring"></div>
+  <div class="intro-ring2"></div>
+  <div class="intro-leaf-tl">🌿</div>
+  <div class="intro-leaf-br">🌿</div>
+
+  <div class="intro-center">
+    <img src="https://lh3.googleusercontent.com/d/16eg1wb1cSN6WgwU36J21oF6FtZOBrGDL" alt="PG del Campo" class="intro-logo">
+    <div class="intro-bar"></div>
+    <h1 class="intro-brand">PG del Campo</h1>
+    <p class="intro-tagline">Del campo a su mesa</p>
+    <p class="intro-sub">Café · Pinolillo · Pinol · Humus</p>
+  </div>
+
+  <div class="intro-progress">
+    <div class="intro-progress-bar"></div>
+  </div>
+</div>
+
+
+
+<!-- Cintillo Marquee -->
+<div class="marquee-container">
+  <div class="marquee-track">
+    <span class="marquee-text">Con la ayuda del Cielo todo es posible realizar - BS"D</span>
+    <span class="marquee-text">Con la ayuda del Cielo todo es posible realizar - BS"D</span>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="container header-container">
+    <div class="logo">
+      <div class="logo-icon"><i class="fas fa-leaf"></i></div>
+      <div class="logo-text">
+        <h1>PG del Campo</h1>
+        <span>Del campo a su mesa</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="cart-icon" onclick="irAPedido()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cart-count-badge">0</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Vista: Inicio -->
+  <section id="inicio" class="section active">
+    <div class="hero">
+      <div class="container">
+        <h2>Productos 100% Nicaragüenses</h2>
+        <p>Café, Pinolillo y Pinol de la más alta calidad. Cultivados en las montañas de Jinotega y Matagalpa, procesados con mucho cuidado y esmero en Jinotepe, Carazo.</p>
+        <a href="#productos" class="btn-hero nav-link" data-target="productos">Explorar Catálogo</a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="about-card">
+        <h3>Nuestra Historia</h3>
+        <p>En PG del Campo nos dedicamos a llevar los auténticos sabores de Nicaragua directamente desde nuestras tierras en Jinotega, Matagalpa y Carazo, hasta tu mesa. Cada producto es cultivado, cosechado y procesado con el mayor cuidado para garantizar su calidad y frescura.</p>
+        <p>Trabajamos la tierra con gratitud y respeto. Desde el grano de café que despierta tus mañanas y el sabor tradicional de nuestro pinol y pinolillo, hasta el humus que nutre tus cultivos; cada producto es elaborado con el compromiso de ofrecerte lo mejor de la naturaleza.</p>
+        <h3>Nuestra Misión</h3>
+        <p>Promover los productos tradicionales nicaragüenses, apoyando a los agricultores locales y ofreciéndote lo mejor de nuestra tierra, llevando nuestros productos ¡¡Del Campo a su Mesa!!.</p>
+        <h3>Nuestra Esencia</h3>
+        <p>Creemos firmemente que cada cosecha y cada proyecto prosperan con la ayuda del Cielo y el esfuerzo de manos dedicadas. Llevamos el campo a tu hogar, cuidando la vida desde la raíz.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vista: Catálogo -->
+  <section id="productos" class="section">
+    <div class="container">
+      <h2 class="section-title">Catálogo</h2>
+      <div id="products-grid" class="products-grid">
+        <p style="padding:20px;color:var(--text-muted);text-align:center">Cargando productos...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vista: Pedido -->
+  <section id="pedido" class="section">
+    <div class="container">
+      <h2 class="section-title">Mi Pedido</h2>
+      <aside class="cart-panel">
+        <!-- Fidelidad -->
+        <div class="stamp">
+          <h3>CLIENTE</h3>
+          <div id="clientInfo">Ingresa tu WhatsApp para consultar tu historial.</div>
+          <div id="stamps" class="sg"></div>
+        </div>
+
+        <!-- Productos en carrito -->
+        <div class="panel-section-title">
+          Resumen de Productos <span id="cart-count" style="font-size:11px;font-weight:normal;margin-left:auto">0 Items</span>
+        </div>
+        <div id="cart-items" class="cart-items-container">
+          <div class="cart-empty">El carrito está vacío</div>
+        </div>
+
+        <!-- Datos de envío y pago -->
+        <div class="panel-section-title" style="margin-top:16px">Datos de Envío y Pago</div>
+
+        <div class="form-group">
+          <label>WhatsApp / Código de cliente *</label>
+          <input type="tel" id="cliente-tel" maxlength="15" placeholder="88888888" oninput="cliente()">
+        </div>
+        <div class="form-group">
+          <label>Nombre Completo / Razón Social *</label>
+          <input type="text" id="cliente-nombre" placeholder="Ej: José Gutiérrez">
+        </div>
+        <div class="form-group">
+          <label>Dirección Física de Destino</label>
+          <textarea id="cliente-dir" rows="2" placeholder="Ej: Costado sur de Iglesia San Antonio"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Tipo de cliente</label>
+          <select id="tipo" onchange="calc()">
+            <option value="particular">Particular</option>
+            <option value="distribuidor">Comercio / Distribuidor</option>
+            <option value="juridica">Empresa / Retenedor</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Modalidad de compra *</label>
+          <select id="modo" onchange="calc()">
+            <option value="contado">Compra al Contado</option>
+            <option value="credito">Compra a Crédito</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Zona / Modalidad de Despacho</label>
+          <select id="zona-envio" onchange="calc()">
+            <option value="20" data-nombre="Envío a Domicilio / Jinotepe">Envío a Domicilio - Jinotepe, Dolores, Diriamba, San Marcos (C$ 20.00)</option>
+            <option value="0" data-nombre="Retiro en Local">Retiro en local — Sin costo</option>
+            <option value="-1" data-nombre="Envío a Convenir (Departamentos)">Departamentos - A Convenir</option>
+          </select>
+        </div>
+        <div class="form-group" id="paymentWrap">
+          <label>Método de Pago</label>
+          <select id="metodo-pago">
+            <option value="lafise">Transferencia / QR LAFISE Bancentro</option>
+            <option value="contra_entrega">Pago Contra Entrega (Efectivo / Transferencia al recibir)</option>
+          </select>
+        </div>
+
+        <!-- Tarjeta LAFISE ACH -->
+        <div class="lafise-ach-card">
+          <div class="ach-header">
+            <i class="fas fa-university"></i>
+            <span>Transferencia Directa / ACH LAFISE</span>
+          </div>
+          <div class="ach-body">
+            <div class="ach-row">
+              <span class="ach-label">Titular:</span>
+              <span class="ach-value">Fernando Martínez (PG del Campo)</span>
+            </div>
+            <div class="ach-row">
+              <span class="ach-label">Alias ACH / Móvil:</span>
+              <div class="ach-copy-group">
+                <strong id="alias-ach-num" class="ach-value highlight">57973097</strong>
+                <button class="btn-copy-alias" onclick="copiarAliasACH()" title="Copiar número">
+                  <i class="far fa-copy"></i> Copiar
+                </button>
+              </div>
+            </div>
+            <div class="ach-row">
+              <span class="ach-label">Número de Cuenta:</span>
+              <span class="ach-value">140051265</span>
+            </div>
+          </div>
+          <div class="ach-footer-note">
+            <small><i class="fas fa-info-circle"></i> Puedes transferir desde cualquier banco usando el Alias ACH con el número de celular.</small>
+          </div>
+        </div>
+
+        <!-- Desglose -->
+        <div class="panel-section-title" style="margin-top:16px">Desglose de Cuenta</div>
+        <div class="totals-line"><span>Subtotal Neto:</span><strong id="subtotal">C$ 0.00</strong></div>
+        <div class="totals-line" id="linea-desc-aplicado" style="display:none">
+          <span id="label-porcentaje-desc" class="discount-label">Descuento Aplicado:</span>
+          <strong id="monto-desc-aplicado" class="discount-label">- C$ 0.00</strong>
+        </div>
+        <div class="totals-line"><span>Costo de Despacho:</span><strong id="costo-envio">C$ 0.00</strong></div>
+        <div class="totals-line total"><span id="totalLabel">TOTAL NETO A PAGAR:</span><strong id="total-pagar">C$ 0.00</strong></div>
+
+        <div id="ret" class="notice credit" style="display:none">Cliente jurídico: revise la retención del 2% I.R. cuando corresponda.</div>
+        <div id="modeNotice" class="notice cash"><b>CONTADO:</b> la transacción queda registrada como pagada con el método seleccionado.</div>
+
+        <button id="btn-whatsapp" class="btn-action btn-whatsapp" onclick="procesar()" disabled>
+          <i class="fab fa-whatsapp"></i> Confirmar Pedido por WhatsApp
+        </button>
+        <button id="btn-recibo" class="btn-action btn-recibo" onclick="generarRecibo()" disabled>
+          <i class="fas fa-print"></i> Generar e Imprimir Recibo
+        </button>
+
+        <div class="qr-payment">
+          <span>Datos de Pago LAFISE Bancentro</span>
+          <div>
+            <img id="sidebar-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https%3A%2F%2Fdigital.lafise.com%2F%3FBANK%3DBLNI%26ACCOUNT_NUMBER%3D140051265%26CONCEPT%3DCompra%2520Productos%2520PG%2520del%2520Campo" alt="QR Pago LAFISE Digital">
+          </div>
+          <span id="sidebar-qr-label" style="font-size:11px;color:#555">Escanea para pagar con LAFISE Digital</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Vista: Nosotros -->
+  <section id="nosotros" class="section">
+    <div class="container">
+      <h2 class="section-title">Sobre Nosotros</h2>
+      <div class="about-card">
+        <h3>Nuestra Filosofía</h3>
+        <p>En PG del Campo creemos en la autenticidad de los productos nicaragüenses. Nos especializamos en:</p>
+        <ul style="padding-left:20px;margin:12px 0;font-size:13px">
+          <li style="margin-bottom:6px">Café de altura tostado artesanalmente</li>
+          <li style="margin-bottom:6px">Pinolillo 100% natural sin conservantes</li>
+          <li style="margin-bottom:6px">Pinol tradicional molido fino</li>
+        </ul>
+        <p>Todos nuestros productos son procesados manteniendo las recetas tradicionales que han pasado de generación en generación.</p>
+      </div>
+      <div class="about-card">
+        <h3>Proceso de Producción</h3>
+        <p>Desde la selección de los mejores granos de café y maíz, hasta el tostado y molido final, cada paso es supervisado para garantizar la máxima calidad. No utilizamos conservantes ni aditivos artificiales.</p>
+        <p>El café puede ser entregado molido o en grano tostado, según la preferencia del cliente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vista: Contacto -->
+  <section id="contacto" class="section">
+    <div class="container">
+      <h2 class="section-title">Contáctanos</h2>
+      <div class="contact-card">
+        <h3>Información de Atención</h3>
+        <!-- Lista de Contacto Completa e Interactiva -->
+<ul class="lista-contacto">
+  <!-- Ubicación -->
+  <li>
+    <i class="fas fa-map-marker-alt icono-animado color-mapa"></i>
+    <div>
+      <strong>Ubicación Principal:</strong><br>
+      Jinotepe, Carazo, Nicaragua
+    </div>
+  </li>
+
+  <!-- WhatsApp / Teléfono -->
+  <li>
+    <i class="fab fa-whatsapp icono-animado color-whatsapp"></i>
+    <div>
+      <strong>Línea de Atención / WhatsApp:</strong><br>
+      <a href="https://wa.me/50557973097?text=Hola%20PG%20del%20Campo%2C%20necesito%20información" target="_blank" rel="noopener noreferrer" class="enlace-contacto enlace-whatsapp">
+        +505 5797 3097
+      </a>
+    </div>
+  </li>
+
+  <!-- Correo Electrónico -->
+  <li>
+    <i class="fas fa-envelope icono-animado color-correo"></i>
+    <div>
+      <strong>Correo Electrónico:</strong><br>
+      <a href="mailto:proglodelcam@gmail.com" class="enlace-contacto">
+        proglodelcam@gmail.com
+      </a>
+    </div>
+  </li>
+
+  <!-- Horario -->
+  <li>
+    <i class="fas fa-clock icono-animado color-horario"></i>
+    <div>
+      <strong>Horario de Operación:</strong><br>
+      Lunes a Viernes: 8:00 AM - 4:00 PM<br>
+      Sábados: 8:00 AM - 12:00 PM
+    </div>
+  </li>
+
+  <!-- Cobertura -->
+  <li>
+    <i class="fas fa-truck icono-animado color-envios"></i>
+    <div>
+      <strong>Cobertura de Envíos:</strong><br>
+      Entregas locales en Jinotepe, Diriamba, Dolores y San Marcos. Envíos nacionales a convenir.
+    </div>
+  </li>
+</ul>
+
+<style>
+/* Estilos del contenedor principal */
+.lista-contacto {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* Formato y alineación de las filas */
+.lista-contacto li {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #333333;
+}
+
+/* Estilos base de los iconos */
+.lista-contacto i {
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+  margin-top: 3px;
+}
+
+/* --- COLORES INDIVIDUALES --- */
+.color-mapa     { color: #E44D26; } /* Rojo ubicación */
+.color-whatsapp { color: #25D366; } /* Verde WhatsApp */
+.color-correo   { color: #EA4335; } /* Rojo Gmail */
+.color-horario  { color: #4A5568; } /* Gris oscuro neutro */
+.color-envios   { color: #3182CE; } /* Azul transporte */
+
+/* Estilos para los enlaces clicables */
+.enlace-contacto {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.enlace-contacto:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* --- ANIMACIÓN INTERMITENTE --- */
+.icono-animado {
+  animation: vibrarIntermitente 4s ease-in-out infinite;
+}
+
+/* Detiene la vibración si pasas el mouse sobre el texto o el icono */
+.lista-contacto li:hover .icono-animado {
+  animation-play-state: paused;
+}
+
+/* Movimiento de vibración (Primeros segundos, luego pausa) */
+@keyframes vibrarIntermitente {
+  0%, 15%, 100% { transform: rotate(0deg); }
+  2%  { transform: rotate(-12deg); }
+  4%  { transform: rotate(12deg); }
+  6%  { transform: rotate(-10deg); }
+  8%  { transform: rotate(10deg); }
+  10% { transform: rotate(-6deg); }
+  12% { transform: rotate(6deg); }
+}
+</style>
+         
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Barra Inferior de Navegación -->
+<nav class="bottom-nav">
+  <a href="#inicio" class="nav-item active nav-link" data-target="inicio"><i class="fas fa-home"></i><span>Inicio</span></a>
+  <a href="#productos" class="nav-item nav-link" data-target="productos"><i class="fas fa-coffee"></i><span>Catálogo</span></a>
+  <a href="#pedido" class="nav-item nav-link" data-target="pedido"><i class="fas fa-shopping-bag"></i><span>Pedido</span></a>
+  <a href="#nosotros" class="nav-item nav-link" data-target="nosotros"><i class="fas fa-info-circle"></i><span>Nosotros</span></a>
+  <a href="#contacto" class="nav-item nav-link" data-target="contacto"><i class="fas fa-phone"></i><span>Contacto</span></a>
+</nav>
+
+<!-- Chatbot -->
+<!-- Portal Home Button -->
+<a href="index.html" id="portalHome" title="Portal PG del Campo" style="position:fixed;bottom:70px;right:16px;width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#1b382b,#2e6b3e);color:#c9a84c;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.25);z-index:999;font-size:1rem;text-decoration:none;transition:transform .2s"><i class="fas fa-th-large"></i></a>
+<style>#portalHome:hover{transform:scale(1.12)}</style>
+
+<div id="chatbot-launcher" onclick="toggleChatBot()" title="Consultar a BotsPG">
+  <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Bot body / droplet shape -->
+    <ellipse cx="60" cy="68" rx="34" ry="30" fill="url(#botBody)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+    <!-- Head visor -->
+    <rect x="30" y="34" rx="16" ry="16" width="60" height="32" fill="#263238" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+    <!-- Left eye glow -->
+    <ellipse cx="45" cy="49" rx="6.5" ry="7" fill="#42a5f5" opacity="0.92">
+      <animate attributeName="opacity" values="0.92;0.55;0.92" dur="2.5s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="45" cy="49" rx="3" ry="3.5" fill="#ffffff" opacity="0.7"/>
+    <!-- Right eye glow -->
+    <ellipse cx="75" cy="49" rx="6.5" ry="7" fill="#42a5f5" opacity="0.92">
+      <animate attributeName="opacity" values="0.92;0.55;0.92" dur="2.5s" begin="0.3s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="75" cy="49" rx="3" ry="3.5" fill="#ffffff" opacity="0.7"/>
+    <!-- Smile -->
+    <path d="M46 60 Q60 70 74 60" stroke="#42a5f5" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.7">
+      <animate attributeName="d" values="M46 60 Q60 70 74 60;M46 61 Q60 68 74 61;M46 60 Q60 70 74 60" dur="3s" repeatCount="indefinite"/>
+    </path>
+    <!-- Headset mic -->
+    <path d="M86 42 Q92 42 92 50 L92 54 Q92 58 88 58" stroke="#c8963e" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.85"/>
+    <circle cx="88" cy="58" r="3" fill="#c8963e" opacity="0.9"/>
+    <!-- Antenna -->
+    <line x1="60" y1="34" x2="60" y2="26" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="60" cy="24" r="2.5" fill="#42a5f5" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0.4;0.8" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Arms -->
+    <path d="M28 64 Q22 58 24 52" stroke="rgba(255,255,255,0.35)" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M92 64 Q98 58 96 52" stroke="rgba(255,255,255,0.35)" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <!-- Hover glow at base -->
+    <ellipse cx="60" cy="98" rx="18" ry="4" fill="#42a5f5" opacity="0.18">
+      <animate attributeName="opacity" values="0.18;0.35;0.18" dur="2.5s" repeatCount="indefinite"/>
+    </ellipse>
+    <defs>
+      <linearGradient id="botBody" x1="30" y1="40" x2="90" y2="98" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#b0bec5"/>
+        <stop offset="1" stop-color="#78909c"/>
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
+<div id="chatbot-window">
+  <div id="header-bot">
+    <div class="bot-title-area">
+      <h3>
+        <svg width="26" height="26" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="60" cy="68" rx="34" ry="30" fill="#b0bec5" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+          <rect x="30" y="34" rx="16" ry="16" width="60" height="32" fill="#263238" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+          <ellipse cx="45" cy="49" rx="6" ry="6.5" fill="#42a5f5" opacity="0.9"/>
+          <ellipse cx="45" cy="49" rx="2.8" ry="3.2" fill="#fff" opacity="0.7"/>
+          <ellipse cx="75" cy="49" rx="6" ry="6.5" fill="#42a5f5" opacity="0.9"/>
+          <ellipse cx="75" cy="49" rx="2.8" ry="3.2" fill="#fff" opacity="0.7"/>
+          <path d="M46 60 Q60 70 74 60" stroke="#42a5f5" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.7"/>
+          <path d="M86 42 Q92 42 92 50 L92 54 Q92 58 88 58" stroke="#c8963e" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.8"/>
+          <circle cx="88" cy="58" r="3.5" fill="#c8963e" opacity="0.85"/>
+          <line x1="60" y1="34" x2="60" y2="27" stroke="rgba(255,255,255,0.5)" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="60" cy="25" r="2.8" fill="#42a5f5" opacity="0.75"/>
+        </svg>
+        BotsPG
+      </h3>
+      <span>Asistente Virtual</span>
+    </div>
+    <button class="btn-close-bot" onclick="toggleChatBot()"><i class="fas fa-times"></i></button>
+  </div>
+  <div id="historial">
+    <div class="mensaje ia">¡Hola! Soy <b>BotsPG</b>, asistente de Productos Globales del Campo. ¿En qué te puedo asesorar hoy? Ofrecemos café de altura, pinolillo, abono orgánico y envíos en la zona de Carazo.</div>
+  </div>
+  <div id="input-area">
+    <input type="text" id="texto" placeholder="Pregúntame por precios, productos..." onkeypress="evaluarTecla(event)">
+    <button id="btn-enviar" onclick="enviarMensaje()">Enviar</button>
+  </div>
+</div>
+
+<!-- Banner Instalar PWA -->
+<div class="install-banner" id="installBanner">
+  <p>Instala PG del Campo en tu celular</p>
+  <button id="installBtn">Instalar</button>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">
+      <i class="fas fa-leaf"></i>
+      <h3>PG del Campo</h3>
+    </div>
+    <div class="footer-links">
+      <div class="footer-column">
+        <h3>Productos</h3>
+        <ul>
+          <li><a href="#productos" class="nav-link" data-target="productos">Café Molido</a></li>
+          <li><a href="#productos" class="nav-link" data-target="productos">Café en Grano</a></li>
+          <li><a href="#productos" class="nav-link" data-target="productos">Pinolillo</a></li>
+          <li><a href="#productos" class="nav-link" data-target="productos">Pinol</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Navegación</h3>
+        <ul>
+          <li><a href="#inicio" class="nav-link" data-target="inicio">Inicio</a></li>
+          <li><a href="#nosotros" class="nav-link" data-target="nosotros">Nosotros</a></li>
+          <li><a href="#contacto" class="nav-link" data-target="contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="social-icons">
+      <a href="https://wa.me/50557973097" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2026 PG del Campo - Jinotepe, Carazo, Nicaragua</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Modal Recibo -->
+<div id="receipt-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header no-print">
+      <h3 style="font-family:'Fraunces',serif;color:var(--primary);font-size:16px">Recibo Oficial de Orden</h3>
+      <button class="btn-close-modal" onclick="closeReceipt()">X</button>
+    </div>
+    <div id="rec-body" style="font-size:12px;font-family:monospace;color:#333;line-height:1.4"></div>
+    <button class="btn-action btn-recibo no-print" style="margin-top:12px" onclick="window.print()">Imprimir Ticket</button>
+  </div>
+</div>
+
+<!-- Script: Pantalla de Bienvenida -->
+<script>
+(function(){
+  /* Generate ambient particles */
+  var pc=document.getElementById('introParticles');
+  if(pc){
+    var cnt=window.innerWidth<500?16:38;
+    for(var i=0;i<cnt;i++){
+      var d=document.createElement('div');
+      d.className='g';
+      var sz=Math.random()*4+1;
+      d.style.width=sz+'px';
+      d.style.height=sz+'px';
+      d.style.left=Math.random()*100+'%';
+      d.style.bottom=-(Math.random()*12)+'%';
+      d.style.animationDuration=(Math.random()*13+7)+'s';
+      d.style.animationDelay=(Math.random()*5)+'s';
+      var gold=Math.random()>.5;
+      d.style.background=gold
+        ?'rgba(200,150,62,'+(Math.random()*.28+.08).toFixed(2)+')'
+        :'rgba(76,175,80,'+(Math.random()*.18+.05).toFixed(2)+')';
+      pc.appendChild(d);
+    }
+  }
+
+  /* Sparkle burst after logo lands */
+  var logo=document.querySelector('.intro-logo');
+  if(logo){
+    logo.addEventListener('animationend',function(){
+      var sym=['✦','✧','⟡','·'];
+      var wrap=document.getElementById('pantalla-bienvenida');
+      for(var s=0;s<10;s++){
+        var sp=document.createElement('div');
+        sp.className='intro-sp';
+        sp.textContent=sym[Math.floor(Math.random()*sym.length)];
+        sp.style.left=(Math.random()*50+25)+'%';
+        sp.style.top=(Math.random()*22+20)+'%';
+        sp.style.animationDelay=(Math.random()*.35)+'s';
+        sp.style.color=Math.random()>.5?'#c8963e':'#4CAF50';
+        wrap.appendChild(sp);
+        (function(el){setTimeout(function(){el.remove()},1200)})(sp);
+      }
+    },{once:true});
+  }
+
+  /* Auto-transition after duration */
+  var el=document.getElementById('pantalla-bienvenida');
+  var DUR=4000;
+  setTimeout(function(){
+    if(!el)return;
+    el.classList.add('fade-out');
+    setTimeout(function(){el.style.display='none'},950);
+  },DUR);
+
+  /* Skip on tap/click */
+  if(el){
+    el.addEventListener('click',function(){
+      el.classList.add('fade-out');
+      setTimeout(function(){el.style.display='none'},950);
+    },{once:true});
+  }
+})();
+</script>
+
+<!-- Script: Copiar Alias ACH -->
+<script>
+function copiarAliasACH(){
+  var numeroAlias=document.getElementById("alias-ach-num").innerText;
+  navigator.clipboard.writeText(numeroAlias).then(function(){
+    alert("\u00a1Alias ACH ("+numeroAlias+") copiado al portapapeles!");
+  }).catch(function(err){
+    console.error("Error al copiar el Alias ACH: ",err);
+  });
+}
+window.copiarAliasACH=copiarAliasACH;
+</script>
+
+<!-- Script: Navegación PWA -->
+<script>
+var navLinks=document.querySelectorAll('.nav-link');
+var sections=document.querySelectorAll('.section');
+var bottomNavItems=document.querySelectorAll('.bottom-nav .nav-item');
+function navegarA(target){
+  sections.forEach(function(section){
+    section.classList.remove('active');
+    if(section.id===target) section.classList.add('active');
+  });
+  bottomNavItems.forEach(function(item){
+    item.classList.remove('active');
+    if(item.dataset.target===target) item.classList.add('active');
+  });
+  window.scrollTo(0,0);
+}
+navLinks.forEach(function(link){
+  link.addEventListener('click',function(e){
+    e.preventDefault();
+    navegarA(link.dataset.target);
+  });
+});
+function irAPedido(){ navegarA('pedido'); }
+window.irAPedido=irAPedido;
+window.navegarA=navegarA;
+
+var deferredPrompt;
+var installBanner=document.getElementById('installBanner');
+var installBtn=document.getElementById('installBtn');
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('sw.js').catch(function(err){console.log('SW Error: ',err);});
+  });
+}
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();
+  deferredPrompt=e;
+  setTimeout(function(){
+    if(!window.matchMedia('(display-mode: standalone)').matches){
+      installBanner.style.display='flex';
+    }
+  },4000);
+});
+if(installBtn){
+  installBtn.addEventListener('click',async function(){
+    if(!deferredPrompt) return;
+    deferredPrompt.prompt();
+    var outcome=await deferredPrompt.userChoice;
+    if(outcome==='accepted'){
+      installBanner.style.display='none';
+      deferredPrompt=null;
+    }
+  });
+}
+</script>
+
+<!-- Script: ChatBot BotsPG -->
+<script>
+var WEB_APP_URL="https://script.google.com/macros/s/AKfycbwoyfQoI6a92QGt5BXlERybT7ujEa9kzolKbcSdIIvGehlbVWtK0ftq240xEzsuqEbs/exec";
+function toggleChatBot(){
+  var win=document.getElementById('chatbot-window');
+  win.style.display=(win.style.display==='flex')?'none':'flex';
+}
+window.toggleChatBot=toggleChatBot;
+
+async function enviarMensaje(){
+  var input=document.getElementById("texto");
+  var historial=document.getElementById("historial");
+  var btn=document.getElementById("btn-enviar");
+  var mensaje=input.value.trim();
+  if(!mensaje) return;
+  historial.innerHTML+='<div class="mensaje usuario">'+mensaje+'</div>';
+  input.value="";
+  historial.scrollTop=historial.scrollHeight;
+  btn.disabled=true;
+  var msgCarga=document.createElement("div");
+  msgCarga.className="mensaje ia";
+  msgCarga.innerHTML="<i>Analizando solicitud central...</i>";
+  historial.appendChild(msgCarga);
+  historial.scrollTop=historial.scrollHeight;
+  try{
+    var response=await fetch(WEB_APP_URL,{
+      method:"POST",
+      headers:{"Content-Type":"text/plain"},
+      body:JSON.stringify({mensaje:mensaje})
+    });
+    var datos=await response.json();
+    if(datos&&datos.respuesta){
+      msgCarga.innerHTML=datos.respuesta;
+    }else{
+      msgCarga.innerHTML="Disculpa, tuvimos un inconveniente al procesar la respuesta. Por favor, intenta de nuevo.";
+    }
+  }catch(error){
+    msgCarga.innerHTML="<b>Aviso de conexi\u00f3n:</b> No se logr\u00f3 enlazar con el puente de Jinotepe. Por favor verifica la publicaci\u00f3n.";
+  }
+  btn.disabled=false;
+  historial.scrollTop=historial.scrollHeight;
+}
+window.enviarMensaje=enviarMensaje;
+
+function evaluarTecla(e){
+  if(e.key==='Enter') enviarMensaje();
+}
+window.evaluarTecla=evaluarTecla;
+</script>
+
+<!-- Script: Firebase + Lógica de negocio -->
+<script type="module">
+import{initializeApp}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import{getDatabase,ref,onValue,get,set,update,runTransaction}from'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
+
+const cfg={
+  apiKey:'AIzaSyBfPmfE6axd_W0Z80b0L-Jbjy6q7l9_NTk',
+  authDomain:'productos-globales-campo.firebaseapp.com',
+  databaseURL:'https://productos-globales-campo-default-rtdb.firebaseio.com',
+  projectId:'productos-globales-campo',
+  storageBucket:'productos-globales-campo.firebasestorage.app',
+  messagingSenderId:'938958452862',
+  appId:'1:938958452862:web:3b618567dae9aa01b7c02f',
+  measurementId:'G-MKD9T10DP3'
+};
+const db=getDatabase(initializeApp(cfg));
+
+let productos={},clientes={},carrito=[],cActual=null;
+const WA='50557973097';
+
+const $=id=>document.getElementById(id),
+      M=n=>'C$ '+Number(n||0).toLocaleString('es-NI',{minimumFractionDigits:2,maximumFractionDigits:2}),
+      E=s=>String(s??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[x]));
+
+/* ── Listeners de Firebase (tiempo real) ── */
+onValue(ref(db,'productos'),s=>{productos=s.val()||{};render()});
+onValue(ref(db,'clientes'),s=>{clientes=s.val()||{};cliente()});
+
+/* ── Render catálogo (nuevas tarjetas PWA) ── */
+function render(){
+  const c=$('products-grid');
+  let html='';
+  Object.entries(productos).forEach(function([id,p]){
+    let st=+p.stock||0;
+    let imgHtml=p.imagen
+      ?'<img class="product-image" src="'+p.imagen+'" alt="'+E(p.nombre)+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="product-image-fallback" style="display:none"><i class="fas fa-leaf"></i></div>'
+      :'<div class="product-image-fallback"><i class="fas fa-leaf"></i></div>';
+    html+='<div class="product-card"><div class="product-image-container">'+imgHtml+'</div><div class="product-info"><h4 class="product-name" title="'+E(p.nombre)+'">'+E(p.nombre)+'</h4><p style="font-size:10px;color:var(--text-muted);margin-bottom:4px">'+(st?st+' disponibles':'Agotado')+'</p><div class="product-price">'+M(p.precio)+'</div><button class="btn-add" '+(st?'':'disabled')+' onclick="add(\''+id+'\')">'+(st?'+ Agregar':'Agotado')+'</button></div></div>';
+  });
+  c.innerHTML=html||'<p style="padding:20px;color:var(--text-muted);text-align:center">No hay productos disponibles.</p>';
+}
+
+/* ── Carrito ── */
+window.add=function(id){
+  let p=productos[id];
+  if(!p)return;
+  let stock=+p.stock||0;
+  let x=carrito.find(function(i){return i.id===id});
+  if(x){
+    if(x.q+1>stock)return alert('Stock insuficiente. Solo quedan '+stock+' unidades.');
+    x.q++;
+  }else{
+    if(stock<1)return alert('Producto agotado.');
+    carrito.push({id,n:p.nombre,price:+p.precio||0,q:1});
+  }
+  calc();
+};
+
+window.removeItem=function(id){carrito=carrito.filter(function(x){return x.id!==id});calc()};
+
+/* ── Cliente ── */
+window.cliente=function(){
+  let t=$('cliente-tel').value.trim();
+  cActual=clientes[t]||null;
+  if(cActual&&!$('cliente-nombre').value)$('cliente-nombre').value=cActual.nombre||'';
+  let n=+(cActual&&cActual.total_compras||0),s=n%10;
+  $('clientInfo').innerHTML=cActual
+    ?'<b>'+E(cActual.nombre||'Cliente')+'</b><br>C\u00f3digo: '+E(t)+' \u00b7 '+n+' compras hist\u00f3ricas'
+    :'Ingresa tu WhatsApp para consultar tu historial.';
+  $('stamps').innerHTML=Array.from({length:10},function(_,i){return '<div class="sd '+(i<s?'on':'')+'">'+(i<s?'\u2605':i+1)+'</div>'}).join('');
+  calc();
+};
+
+/* ── Descuento por volumen ── */
+function pct(sub){
+  if($('tipo').value==='distribuidor')return 0;
+  return sub>1800?0.03:sub>1200?0.02:sub>600?0.01:0;
+}
+
+function totals(){
+  let sub=carrito.reduce(function(a,i){return a+i.q*i.price},0),
+      p=pct(sub),
+      d=sub*p,
+      z=+$('zona-envio').value,
+      conv=z===-1,
+      ship=conv?0:z,
+      total=sub-d+ship;
+  return{sub,p,d,z,conv,ship,total,modo:$('modo').value,metodo:$('metodo-pago').value};
+}
+
+/* ── Actualizar QR dinámico del sidebar ── */
+var _lastReceiptRef='';
+function updateSidebarQR(amount,refNum){
+  var base='https://digital.lafise.com/?BANK=BLNI&ACCOUNT_NUMBER=140051265';
+  var url=base+'&AMOUNT='+encodeURIComponent(amount.toFixed(2));
+  if(refNum) url+='&REFERENCE='+encodeURIComponent(refNum);
+  url+='&CONCEPT=Compra%20Productos%20PG%20del%20Campo';
+  $('sidebar-qr').src='https://api.qrserver.com/v1/create-qr-code/?size=110x110&data='+encodeURIComponent(url);
+  _lastReceiptRef=refNum||'';
+  var label=refNum?'Escanea para pagar C$'+amount.toFixed(2)+' (Ref: '+refNum+')':'Escanea para pagar C$'+amount.toFixed(2)+' con LAFISE Digital';
+  $('sidebar-qr-label').textContent=label;
+}
+
+/* ── Calcular y renderizar carrito ── */
+window.calc=calc;function calc(){
+  let q=carrito.reduce(function(a,i){return a+i.q},0),t=totals();
+  $('cart-count').textContent=q+' Items';
+  $('cart-count-badge').textContent=q;
+  $('cart-items').innerHTML=carrito.map(function(i){return '<div class="cart-item"><div class="cart-item-details"><h4>'+E(i.n)+'</h4><p>C$ '+i.price.toFixed(2)+' \u00d7 '+i.q+'</p></div><div class="cart-item-actions"><strong>C$ '+(i.price*i.q).toFixed(2)+'</strong><button class="btn-remove" onclick="removeItem(\''+i.id+'\')">Quitar</button></div></div>'}).join('')||'<div class="cart-empty">El carrito est\u00e1 vac\u00edo</div>';
+  $('subtotal').textContent=M(t.sub);
+  $('costo-envio').textContent=t.conv&&t.sub?'A convenir':M(t.ship);
+  $('total-pagar').textContent=t.conv&&t.sub?M(t.sub-t.d)+' + env\u00edo':M(t.total);
+  $('linea-desc-aplicado').style.display=t.p?'flex':'none';
+  $('label-porcentaje-desc').textContent='Descuento por volumen ('+t.p*100+'%)';
+  $('monto-desc-aplicado').textContent='-'+M(t.d);
+  $('ret').style.display=$('tipo').value==='juridica'&&t.sub>1000?'block':'none';
+  $('paymentWrap').style.display=t.modo==='contado'?'block':'none';
+  $('totalLabel').textContent=t.modo==='credito'?'SALDO A CR\u00c9DITO':'TOTAL NETO A PAGAR';
+  $('modeNotice').className='notice '+(t.modo==='credito'?'credit':'cash');
+  $('modeNotice').innerHTML=t.modo==='credito'
+    ?'<b>CR\u00c9DITO:</b> la compra queda pendiente y alimenta autom\u00e1ticamente Cuentas por Cobrar.'
+    :'<b>CONTADO:</b> la transacci\u00f3n queda registrada como pagada con el m\u00e9todo seleccionado.';
+  $('btn-whatsapp').disabled=!q||!$('cliente-tel').value.trim()||!$('cliente-nombre').value.trim();
+  $('btn-recibo').disabled=!q||!$('cliente-tel').value.trim();
+  if(t.sub>0){ updateSidebarQR(t.total,_lastReceiptRef); }
+  else{ _lastReceiptRef=''; $('sidebar-qr-label').textContent='Escanea para pagar con LAFISE Digital'; }
+}
+
+/* ── Contador de recibos ── */
+async function nextReceipt(){
+  let r=ref(db,'meta/contador_recibo');
+  let result=await runTransaction(r,current=>{
+    if(current===null)return 1002;
+    return(current||1001)+1;
+  });
+  let n=result.snapshot.exists()?+result.snapshot.val()-1:1001;
+  if(!result.committed)n=Math.max(n,1001);
+  return String(n).padStart(7,'0');
+}
+
+/* ── Guardar transacción en Firebase (update con leaf-paths) ── */
+async function saveTransaction(num){
+  let t=totals(),
+      tel=$('cliente-tel').value.trim(),
+      name=$('cliente-nombre').value.trim()||'Cliente General';
+  if(!tel)throw Error('Falta el c\u00f3digo de cliente (WhatsApp).');
+  let id=(t.modo==='credito'?'credito_':'contado_')+Date.now(),
+      now=new Date().toISOString(),
+      old=clientes[tel]||{},
+      items={};
+  carrito.forEach(function(i){items[i.id]={cantidad:i.q,nombre:i.n,precio:i.price}});
+  let paid=t.modo==='contado'?t.total:0,
+      status=t.modo==='contado'?'pagada':'pendiente',
+      u={};
+  u['clientes/'+tel+'/nombre']=name||old.nombre||'';
+  u['clientes/'+tel+'/total_compras']=(+old.total_compras||0)+1;
+  u['clientes/'+tel+'/monto_total']=(+old.monto_total||0)+t.total;
+  u['clientes/'+tel+'/ultima_compra']=now;
+  u['clientes/'+tel+'/ultima_compra_id']=id;
+  u['clientes/'+tel+'/compras/'+id]={
+    id,fecha:now,numero_recibo:num,
+    tipo:t.modo==='credito'?'Venta a cr\u00e9dito':'Venta al contado',
+    estado:status,subtotal:t.sub,porcentaje_descuento:t.p,
+    monto_descuento:t.d,envio:t.ship,total:t.total,
+    monto_pagado:paid,saldo_pendiente:t.modo==='credito'?t.total:0,
+    metodo_pago:t.modo==='contado'?t.metodo:'N/A',items
+  };
+  u['compras_registro/'+id]={
+    id,fecha:now,whatsapp_cliente:tel,nombre_cliente:name,
+    numero_recibo:num,tipo:t.modo,estado:status,
+    items:Object.fromEntries(carrito.map(function(i){return[i.id,i.q]})),
+    monto_revertir:t.total,subtotal:t.sub,descuento:t.d,
+    envio:t.ship,total:t.total,
+    monto_pagado:paid,saldo_pendiente:t.modo==='credito'?t.total:0,
+    metodo_pago:t.modo==='contado'?t.metodo:'N/A'
+  };
+  u['transacciones/'+id]={
+    id,fecha:now,cliente:name,whatsapp:tel,
+    tipo:t.modo==='credito'?'Venta a cr\u00e9dito':'Venta al contado',
+    monto:t.total,monto_pagado:paid,
+    saldo_pendiente:t.modo==='credito'?t.total:0,
+    estado:status,numero_recibo:num,
+    metodo_pago:t.modo==='contado'?t.metodo:'N/A'
+  };
+  if(t.modo==='credito'){
+    u['cuentas_por_cobrar/'+id]={
+      id,fecha:now,whatsapp_cliente:tel,nombre_cliente:name,
+      numero_recibo:num,monto_original:t.total,
+      monto_pagado:0,saldo_pendiente:t.total,
+      estado:'pendiente',tipo:'Venta a cr\u00e9dito',items,
+      metodo_pago:'N/A'
+    };
+  }
+  for(let i of carrito){
+    let pdt=productos[i.id];
+    if(pdt)u['productos/'+i.id]={...pdt,stock:Math.max(0,+pdt.stock-i.q)};
+  }
+  await update(ref(db),u);
+  return{id,num,t};
+}
+
+/* ── Mensaje WhatsApp (con datos LAFISE) ── */
+function msg(d){
+  let t=d.t,
+      selZona=$('zona-envio'),
+      nombreZona=selZona.options[selZona.selectedIndex].getAttribute('data-nombre')||'',
+      dir=$('cliente-dir').value.trim()||'Retiro en Sucursal',
+      m='*PRODUCTOS GLOBALES DEL CAMPO*%0A====================%0A*RECIBO:* '+d.num+'%0A*CLIENTE:* '+d.name+'%0A*C\u00d3DIGO:* '+d.tel+'%0A*MODALIDAD:* '+(t.modo==='credito'?'VENTA A CR\u00c9DITO':'VENTA AL CONTADO')+'%0A';
+  if(t.modo==='contado')m+='*M\u00c9TODO DE PAGO:* '+(t.metodo==='lafise'?'Transferencia / QR LAFISE Bancentro':'Pago Contra Entrega (Efectivo / Transferencia al recibir)')+'%0A';
+  m+='%0A*PRODUCTOS:*%0A';
+  carrito.forEach(function(i){m+='\u2022 '+i.n+' \u2014 '+i.q+' \u00d7 C$'+i.price.toFixed(2)+'%0A'});
+  m+='%0A*SUBTOTAL:* C$'+t.sub.toFixed(2)+'%0A*DESCUENTO VOLUMEN ('+t.p*100+'%):* -C$'+t.d.toFixed(2)+'%0A*ENV\u00cdO:* '+(t.conv?'A convenir':'C$'+t.ship.toFixed(2))+'%0A*MODALIDAD DESPACHO:* '+nombreZona+'%0A*DIRECCI\u00d3N:* '+dir+'%0A*'+(t.modo==='credito'?'SALDO A CR\u00c9DITO':'TOTAL PAGADO')+':* C$'+t.total.toFixed(2)+'%0A*ESTADO:* '+(t.modo==='credito'?'PENDIENTE DE PAGO':'PAGADO');
+  var lafiseUrl='https://digital.lafise.com/?BANK=BLNI&ACCOUNT_NUMBER=140051265&AMOUNT='+t.total.toFixed(2)+'&REFERENCE='+d.num+'&CONCEPT=Compra%20Productos%20PG%20del%20Campo';
+  m+='%0A%0A*DATOS DE PAGO*%0A====================%0A*%F0%9F%94%97 PAGAR AHORA:* '+encodeURIComponent(lafiseUrl)+'%0A%0A*M\u00c9TODO DE PAGO:* Transferencia / LAFISE Digital%0A*Titular:* Fernando Mart\u00ednez (Representante Legal PG del Campo)%0A*Cuenta N\u00b0:* 140051265%0A*Alias ACH/M\u00f3vil LAFISE:* 5797 3097%0A%0AToca el enlace de pago o paga desde la app LAFISE Digital usando el Alias ACH/M\u00f3vil o el n\u00famero de cuenta, con el monto exacto de C$'+t.total.toFixed(2);
+m+='%0A%0A*BS*D%0ATodo lo Bueno viene de Dios, con su ayuda todo es posible realizar';
+  return m;
+}
+
+/* ── Procesar venta ── */
+window.procesar=async function(){
+  if(!carrito.length)return;
+  let name=$('cliente-nombre').value.trim(),tel=$('cliente-tel').value.trim();
+  if(!name||!tel)return alert('Completa nombre y WhatsApp.');
+  try{
+    let num=await nextReceipt(),d=await saveTransaction(num);
+    _lastReceiptRef=d.num;
+    window.open('https://wa.me/'+WA+'?text='+msg({name:name,tel:tel,num:d.num,t:d.t}),'_blank');
+    carrito=[];calc();
+    alert('Transacci\u00f3n '+num+' registrada correctamente.');
+  }catch(e){
+    console.error(e);
+    alert('No se pudo registrar la transacci\u00f3n: '+e.message);
+  }
+};
+
+/* ── Generar recibo ── */
+window.generarRecibo=async function(){
+  if(!carrito.length)return;
+  let name=$('cliente-nombre').value.trim()||'Cliente',tel=$('cliente-tel').value.trim();
+  if(!tel)return alert('Completa el c\u00f3digo de cliente.');
+  try{
+    let num=await nextReceipt(),d=await saveTransaction(num),t=d.t;
+    _lastReceiptRef=d.num;
+    updateSidebarQR(t.total,d.num);
+    let lafisePayUrl='https://digital.lafise.com/?BANK=BLNI&ACCOUNT_NUMBER=140051265&AMOUNT='+t.total.toFixed(2)+'&REFERENCE='+d.num+'&CONCEPT=Compra%20Productos%20PG%20del%20Campo';
+    let lafiseInfo='LAFISE Bancentro\nTitular: Fernando Martinez\nCuenta No. 140051265\nAlias ACH/Movil: 5797 3097\nMonto: C$ '+t.total.toFixed(2);
+    let qrUrl='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='+encodeURIComponent(lafisePayUrl);
+    let selZona=$('zona-envio'),nombreZona=selZona.options[selZona.selectedIndex].getAttribute('data-nombre')||'';
+    let dir=$('cliente-dir').value.trim()||'Despacho Convencional';
+    $('rec-body').innerHTML=
+      '<div style="text-align:center;font-weight:bold;margin-bottom:2px">PG DEL CAMPO</div>'+
+      '<div style="text-align:center;font-size:10px">R\u00daC: 0452907730000U</div>'+
+      '<div style="text-align:center;font-size:9.5px;font-weight:bold;margin-bottom:2px">R\u00e9gimen de Cuota Fija</div>'+
+      '<div style="text-align:center;font-size:10px;margin-bottom:8px">Jinotepe, Carazo, Nicaragua</div>'+
+      '<div style="margin-bottom:3px"><strong>No. Recibo:</strong> '+num+'</div>'+
+      '<div style="margin-bottom:6px"><strong>Fecha Emisi\u00f3n:</strong> '+new Date().toLocaleDateString('es-NI')+'</div>'+
+      '<hr style="border:none;border-top:1px dashed #ccc;margin:6px 0">'+
+      '<div style="margin-bottom:6px"><strong>Cliente:</strong> '+E(name)+'<br><strong>Tel\u00e9fono:</strong> '+E(tel)+'<br><strong>Direcci\u00f3n:</strong> '+E(dir)+'<br><strong>Despacho:</strong> '+E(nombreZona)+'</div>'+
+      '<hr style="border:none;border-top:1px dashed #ccc;margin:6px 0">'+
+      '<div style="font-weight:bold;margin-bottom:4px">ITEMS COMPRADOS:</div>'+
+      carrito.map(function(i){return '<div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>'+i.q+'x '+E(i.n)+'</span><span>C$ '+(i.price*i.q).toFixed(2)+'</span></div>'}).join('')+
+      '<hr style="border:none;border-top:1px dashed #ccc;margin:6px 0">'+
+      '<div style="display:flex;justify-content:space-between"><span>SUBTOTAL:</span><span>C$ '+t.sub.toFixed(2)+'</span></div>'+
+      (t.p>0?'<div style="display:flex;justify-content:space-between"><span>Descuento ('+t.p*100+'%):</span><span>- C$ '+t.d.toFixed(2)+'</span></div>':'')+
+      '<div style="display:flex;justify-content:space-between"><span>ENV\u00cdO:</span><span>'+(t.conv?'A convenir':'C$ '+t.ship.toFixed(2))+'</span></div>'+
+      '<div style="display:flex;justify-content:space-between;font-weight:bold;font-size:13px;margin-top:6px"><span>TOTAL COMPRA:</span><span>C$ '+t.total.toFixed(2)+'</span></div>'+
+      '<hr style="border:none;border-top:1px dashed #ccc;margin:6px 0">'+
+      '<div style="background:#f4f4f6;padding:8px;border-radius:6px;margin:6px 0;font-size:10.5px;text-align:center">'+
+        '<p style="font-size:11px;color:var(--primary);font-weight:bold;margin-bottom:6px">DATOS DE PAGO LAFISE</p>'+
+        '<a href="'+lafisePayUrl+'" target="_blank" rel="noopener" style="display:inline-block;background:#005691;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-size:11px;font-weight:bold;margin-bottom:8px">\uD83D\uDD17 Pagar con LAFISE Digital</a>'+
+        '<p style="font-size:10px;color:#444;margin-bottom:2px"><strong>Titular:</strong> Fernando Mart\u00ednez (Representante Legal PG del Campo)</p>'+
+        '<p style="font-size:10px;color:#444;margin-bottom:2px"><strong>Cuenta N\u00b0:</strong> 140051265</p>'+
+        '<p style="font-size:10px;color:#444;margin-bottom:6px"><strong>Alias ACH/M\u00f3vil:</strong> 5797 3097</p>'+
+        '<div style="margin-top:6px">'+
+          '<p style="font-size:9.5px;font-weight:bold;color:#555;margin-bottom:3px">Escanea para pagar con LAFISE Digital:</p>'+
+          '<img src="'+qrUrl+'" alt="QR Pago LAFISE Digital" style="width:120px;height:120px;border:1px solid #ddd;padding:4px;background:#fff;border-radius:6px">'+
+        '</div>'+
+      '</div>'+
+      '<hr style="border:none;border-top:1px dashed #ccc;margin:6px 0">'+
+      '<p style="text-align:center;font-size:10.5px;font-weight:bold;color:var(--primary);margin-top:6px">\u00a1Gracias por preferirnos e impulsar el campo!</p>'+
+      '<hr style="border:none;border-top:1px dashed #ccc;margin:6px 0">'+
+      '<p style="text-align:center;font-size:11px;font-weight:bold;color:var(--primary);margin-top:4px">*BS*D</p>'+
+      '<p style="text-align:center;font-size:10px;font-style:italic;color:#555">Todo lo Bueno viene de Dios, con su ayuda todo es posible realizar</p>';
+    $('receipt-modal').style.display='flex';
+    carrito=[];
+    $('cliente-dir').value='';
+    calc();
+  }catch(e){
+    alert('No se pudo generar el recibo: '+e.message);
+  }
+};
+
+window.closeReceipt=function(){$('receipt-modal').style.display='none'};
+
+calc();
+</script>
+</body>
+</html>
