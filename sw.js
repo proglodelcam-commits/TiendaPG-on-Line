@@ -1,82 +1,82 @@
-// PG del Campo — Tienda Client Service Worker v2.0
-const CACHE_NAME = 'pg-tienda-v2';
+// PG del Campo — Service Worker v1.0.0
+// Estrategia: Network-first con cache fallback
 
-const PRECACHE_ASSETS = [
+var CACHE_NAME = 'pg-del-campo-v1';
+var ASSETS = [
   './',
   './index.html',
   './tienda.html',
   './fidelidad.html',
+  './admin.html',
   './enlaces.html',
   './manifest.webmanifest',
-  './favicon.ico',
   './icons/favicon.png',
-  './icons/favicon-16x16.png',
   './icons/favicon-32x32.png',
-  './icons/favicon-48x48.png',
+  './icons/favicon-16x16.png',
   './icons/apple-touch-icon.png',
   './icons/android-chrome-192x192.png',
   './icons/android-chrome-512x512.png'
 ];
 
-const RUNTIME_CACHE_HOSTS = [
-  'fonts.googleapis.com',
-  'fonts.gstatic.com',
-  'cdnjs.cloudflare.com',
-  'www.gstatic.com',
-  'cdn.jsdelivr.net',
-  'api.qrserver.com'
-];
-
-self.addEventListener('install', event => {
+// Instalar: pre-cachea los assets principales
+self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(PRECACHE_ASSETS))
-      .then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then(function(cache) {
+      console.log('[SW] Cacheando assets principales');
+      return cache.addAll(ASSETS);
+    }).then(function() {
+      return self.skipWaiting();
+    })
   );
 });
 
-self.addEventListener('activate', event => {
+// Activar: limpia caches viejas
+self.addEventListener('activate', function(event) {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
-    )
-  );
-  self.clients.claim();
-});
-
-self.addEventListener('fetch', event => {
-  const url = new URL(event.request.url);
-  if (event.request.method !== 'GET') return;
-  if (url.hostname.includes('firebaseio.com')) return;
-
-  if (url.origin === self.location.origin) {
-    event.respondWith(
-      caches.match(event.request).then(cached => {
-        if (cached) return cached;
-        return fetch(event.request).then(response => {
-          if (response.ok) {
-            caches.open(CACHE_NAME).then(cache => cache.put(event.request, response.clone()));
-          }
-          return response;
-        }).catch(() => {
-          if (event.request.mode === 'navigate') return caches.match('./index.html');
-        });
-      })
-    );
-    return;
-  }
-
-  if (RUNTIME_CACHE_HOSTS.some(h => url.hostname.includes(h))) {
-    event.respondWith(
-      caches.open(CACHE_NAME).then(cache =>
-        cache.match(event.request).then(cached => {
-          const fetchPromise = fetch(event.request).then(response => {
-            if (response.ok) cache.put(event.request, response.clone());
-            return response;
-          }).catch(() => cached);
-          return cached || fetchPromise;
+    caches.keys().then(function(keys) {
+      return Promise.all(
+        keys.filter(function(key) {
+          return key !== CACHE_NAME;
+        }).map(function(key) {
+          console.log('[SW] Eliminando cache vieja:', key);
+          return caches.delete(key);
         })
-      )
-    );
-  }
+      );
+    }).then(function() {
+      return self.clients.claim();
+    })
+  );
+});
+
+// Fetch: network-first, cache fallback
+self.addEventListener('fetch', function(event) {
+  // Solo cachear GET requests
+  if (event.request.method !== 'GET') return;
+
+  // No cachear requests de API externas (Google, etc.)
+  var url = new URL(event.request.url);
+  if (url.origin !== self.location.origin) return;
+
+  event.respondWith(
+    fetch(event.request).then(function(response) {
+      // Si la red responde, actualizamos cache y devolvemos
+      if (response.ok) {
+        var responseClone = response.clone();
+        caches.open(CACHE_NAME).then(function(cache) {
+          cache.put(event.request, responseClone);
+        });
+      }
+      return response;
+    }).catch(function() {
+      // Si no hay red, servimos desde cache
+      return caches.match(event.request).then(function(cached) {
+        if (cached) return cached;
+        // Fallback a index.html para navegación SPA
+        if (event.request.mode === 'navigate') {
+          return caches.match('./index.html');
+        }
+        return new Response('Offline', { status: 503, statusText: 'Sin conexión' });
+      });
+    })
+  );
 });

@@ -1,0 +1,28 @@
+# — Claves y secretos —
+.env
+.env.local
+.env.production
+*.key
+*.pem
+credentials.json
+service-account.json
+secrets.json
+
+# — API Keys (NUNCA subir estos archivos) —
+**/api-keys*
+**/secrets*
+
+# — Node —
+node_modules/
+
+# — OS —
+.DS_Store
+Thumbs.db
+
+# — IDE —
+.vscode/
+.idea/
+
+# — Build artifacts —
+dist/
+.cache/
