@@ -1,45 +1,32 @@
 {
-  "name": "PG del Campo — Del Campo a Tu Hogar",
-  "short_name": "PG del Campo",
-  "description": "Distribución inteligente del campo a tu hogar. Café, Pinolillo, Pinol y más desde Jinotepe, Carazo, Nicaragua.",
-  "start_url": ".",
-  "scope": ".",
+  "name": "PG del Campo - Catálogo",
+  "short_name": "PG Campo",
+  "description": "Productos nicaragüenses de calidad: Café, Pinolillo y Pinol. Directamente del campo a su mesa en Jinotepe, Carazo.",
+  "start_url": "/Tarjeta_Fidelidad/index.html",
+  "scope": "/Tarjeta_Fidelidad/",
   "display": "standalone",
+  "background_color": "#1B5E20",
+  "theme_color": "#1B5E20",
   "orientation": "portrait-primary",
-  "lang": "es",
-  "dir": "ltr",
-  "theme_color": "#1b382b",
-  "background_color": "#1b382b",
-  "categories": ["shopping", "food", "business"],
+  "categories": ["shopping", "food"],
   "icons": [
     {
-      "src": "icons/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/android-chrome-192x192-maskable.png",
+      "src": "./pg-icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any"
     },
     {
-      "src": "icons/android-chrome-512x512-maskable.png",
+      "src": "./pg-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./pg-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
-    },
-    {
-      "src": "icons/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
     }
-  ],
-  "screenshots": [],
-  "prefer_related_applications": false
+  ]
 }

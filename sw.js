@@ -1,82 +1,43 @@
-// PG del Campo — Service Worker v1.0.0
-// Estrategia: Network-first con cache fallback
+/* Service Worker – PG del Campo Catálogo */
+const CACHE_NAME = 'pg-campo-v1';
+const OFFLINE_URL = './index.html';
 
-var CACHE_NAME = 'pg-del-campo-v1';
-var ASSETS = [
+const PRECACHE_URLS = [
   './',
   './index.html',
-  './tienda.html',
-  './fidelidad.html',
-  './admin.html',
-  './enlaces.html',
-  './manifest.webmanifest',
-  './icons/favicon.png',
-  './icons/favicon-32x32.png',
-  './icons/favicon-16x16.png',
-  './icons/apple-touch-icon.png',
-  './icons/android-chrome-192x192.png',
-  './icons/android-chrome-512x512.png'
+  './manifest.json',
+  './favicon.ico',
+  './favicon-32.png',
+  './favicon-16.png',
+  './apple-touch-icon.png',
+  './pg-icon-192.png',
+  './pg-icon-512.png'
 ];
 
-// Instalar: pre-cachea los assets principales
-self.addEventListener('install', function(event) {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(function(cache) {
-      console.log('[SW] Cacheando assets principales');
-      return cache.addAll(ASSETS);
-    }).then(function() {
-      return self.skipWaiting();
-    })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(PRECACHE_URLS))
   );
+  self.skipWaiting();
 });
 
-// Activar: limpia caches viejas
-self.addEventListener('activate', function(event) {
+self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(function(keys) {
-      return Promise.all(
-        keys.filter(function(key) {
-          return key !== CACHE_NAME;
-        }).map(function(key) {
-          console.log('[SW] Eliminando cache vieja:', key);
-          return caches.delete(key);
-        })
-      );
-    }).then(function() {
-      return self.clients.claim();
-    })
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+    )
   );
+  self.clients.claim();
 });
 
-// Fetch: network-first, cache fallback
-self.addEventListener('fetch', function(event) {
-  // Solo cachear GET requests
-  if (event.request.method !== 'GET') return;
-
-  // No cachear requests de API externas (Google, etc.)
-  var url = new URL(event.request.url);
-  if (url.origin !== self.location.origin) return;
-
+self.addEventListener('fetch', event => {
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(() => caches.match(OFFLINE_URL))
+    );
+    return;
+  }
   event.respondWith(
-    fetch(event.request).then(function(response) {
-      // Si la red responde, actualizamos cache y devolvemos
-      if (response.ok) {
-        var responseClone = response.clone();
-        caches.open(CACHE_NAME).then(function(cache) {
-          cache.put(event.request, responseClone);
-        });
-      }
-      return response;
-    }).catch(function() {
-      // Si no hay red, servimos desde cache
-      return caches.match(event.request).then(function(cached) {
-        if (cached) return cached;
-        // Fallback a index.html para navegación SPA
-        if (event.request.mode === 'navigate') {
-          return caches.match('./index.html');
-        }
-        return new Response('Offline', { status: 503, statusText: 'Sin conexión' });
-      });
-    })
+    caches.match(event.request).then(cached => cached || fetch(event.request))
   );
 });
